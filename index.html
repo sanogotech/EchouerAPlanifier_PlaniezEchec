@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portail de Planification Stratégique</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --primary-color: #1a5276;
+      --secondary-color: #2e86c1;
+      --accent-color: #e74c3c;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --light-bg: #f8f9fa;
+      --dark-bg: #2c3e50;
+      --planning-blue: #3498db;
+      --strategy-purple: #8e44ad;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: white;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--strategy-purple) 100%);
+      color: white;
+      padding: 5rem 0;
+      margin-bottom: 3rem;
+      border-radius: 0 0 20px 20px;
+      text-align: center;
+    }
+
+    .hero-quote {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .card-header {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      padding: 1.2rem 1.5rem;
+    }
+
+    .step-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--secondary-color);
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .process-step {
+      position: relative;
+      padding: 2rem 0 2rem 50px;
+      margin-bottom: 30px;
+      border-left: 3px solid var(--secondary-color);
+    }
+
+    .process-step:before {
+      content: "";
+      position: absolute;
+      left: -12px;
+      top: 2rem;
+      width: 20px;
+      height: 20px;
+      background-color: var(--secondary-color);
+      border-radius: 50%;
+    }
+
+    .process-step:after {
+      content: "";
+      position: absolute;
+      left: -3px;
+      top: 2.8rem;
+      width: 3px;
+      height: calc(100% - 20px);
+      background-color: var(--secondary-color);
+    }
+
+    .process-step:last-child:after {
+      display: none;
+    }
+
+    .badge-plan {
+      background-color: var(--planning-blue);
+      color: white;
+    }
+
+    .badge-fail {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    .badge-success {
+      background-color: var(--success-color);
+      color: white;
+    }
+
+    .highlight-box {
+      background-color: rgba(52, 152, 219, 0.1);
+      border-left: 4px solid var(--planning-blue);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .warning-box {
+      background-color: rgba(243, 156, 18, 0.1);
+      border-left: 4px solid var(--warning-color);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .success-box {
+      background-color: rgba(39, 174, 96, 0.1);
+      border-left: 4px solid var(--success-color);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .planning-matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .matrix-cell {
+      padding: 1.5rem;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+    }
+
+    .matrix-urgent {
+      background-color: var(--accent-color);
+    }
+
+    .matrix-important {
+      background-color: var(--warning-color);
+    }
+
+    .matrix-not-urgent {
+      background-color: var(--success-color);
+    }
+
+    .matrix-not-important {
+      background-color: #95a5a6;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .timeline-date {
+      position: absolute;
+      left: 0;
+      top: 20px;
+      width: 100px;
+      text-align: center;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .timeline-content {
+      margin-left: 130px;
+      padding: 15px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .timeline:before {
+      content: '';
+      position: absolute;
+      left: 115px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background-color: var(--secondary-color);
+    }
+
+    .timeline-item:before {
+      content: '';
+      position: absolute;
+      left: 110px;
+      top: 30px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: var(--secondary-color);
+      z-index: 1;
+    }
+
+    .quote-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 5px solid var(--primary-color);
+      padding: 2rem;
+      margin: 2rem 0;
+      border-radius: 0 10px 10px 0;
+      font-style: italic;
+    }
+
+    .interactive-plan {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .plan-step {
+      background-color: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--planning-blue);
+    }
+
+    .plan-step.completed {
+      border-left-color: var(--success-color);
+      background-color: rgba(39, 174, 96, 0.05);
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.8rem;
+    }
+
+    .checklist-item input[type="checkbox"] {
+      margin-right: 10px;
+      margin-top: 5px;
+    }
+
+    .progress-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: conic-gradient(var(--success-color) 0% 75%, #ecf0f1 75% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      position: relative;
+    }
+
+    .progress-circle:before {
+      content: '';
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: white;
+    }
+
+    .progress-circle span {
+      position: relative;
+      z-index: 1;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .btn-primary {
+      background-color: var(--planning-blue);
+      border: none;
+      padding: 0.8rem 1.8rem;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+    }
+
+    .btn-outline-primary {
+      color: var(--planning-blue);
+      border-color: var(--planning-blue);
+    }
+
+    .btn-outline-primary:hover {
+      background-color: var(--planning-blue);
+      color: white;
+    }
+
+    footer {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 3rem 0;
+      margin-top: 4rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .section-title {
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background-color: var(--secondary-color);
+      border-radius: 2px;
+    }
+
+    .section-title.text-center:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-quote {
+        font-size: 1.8rem;
+      }
+      
+      .planning-matrix {
+        grid-template-columns: 1fr;
+      }
+      
+      .timeline-date {
+        position: relative;
+        width: auto;
+        margin-bottom: 10px;
+      }
+      
+      .timeline-content {
+        margin-left: 0;
+      }
+      
+      .timeline:before, .timeline-item:before {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-calendar-check me-2"></i>Portail de Planification
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#concept">Concept</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#exemples">Exemples d'échec</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#methode">Méthode en 5 étapes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#outils">Outils</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#simulation">Planificateur</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#conclusion">Conclusion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-quote">
+        "Si vous échouez à planifier, vous planifiez l'échec"
+      </div>
+      <p class="lead fs-4 mb-4">Guide pratique pour la planification stratégique dans le travail, les projets, la carrière et la vie personnelle</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="#methode" class="btn btn-light btn-lg px-4">
+          <i class="bi bi-play-circle me-2"></i>Démarrer la planification
+        </a>
+        <a href="#simulation" class="btn btn-outline-light btn-lg px-4">
+          <i class="bi bi-tools me-2"></i>Essayer l'outil
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container mt-5 pt-5">
+    <section id="concept" class="mb-5">
+      <h2 class="section-title">🧭 Comprendre le sens profond de la phrase</h2>
+      
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-x-circle-fill me-2 text-danger"></i>
+              <h5 class="mb-0">Ne pas planifier, c'est :</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex">
+                  <i class="bi bi-arrow-right-circle-fill text-danger me-2"></i>
+                  <span>Avancer sans priorité ni direction claire</span>
+                </li>
+                <li class="list-group-item d-flex">
+                  <i class="bi bi-arrow-right-circle-fill text-danger me-2"></i>
+                  <span>Réagir constamment au lieu d'agir de manière proactive</span>
+                </li>
+                <li class="list-group-item d-flex">
+                  <i class="bi bi-arrow-right-circle-fill text-danger me-2"></i>
+                  <span>Dépendre des urgences et priorités des autres</span>
+                </li>
+                <li class="list-group-item d-flex">
+                  <i class="bi bi-arrow-right-circle-fill text-danger me-2"></i>
+                  <span>Multiplier les erreurs évitables et les retards</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-check-circle-fill me-2 text-success"></i>
+              <h5 class="mb-0">Planifier, c'est :</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex">
+                  <i class="bi bi-arrow-right-circle-fill text-success me-2"></i>
+                  <span>Choisir consciemment avant d'agir</span>
+                </li>
+                <li class="list-group-item d-flex">
+                  <i class="bi bi-arrow-right-circle-fill text-success me-2"></i>
+                  <span>Allouer efficacement temps et ressources</span>
+                </li>
+                <li class="list-group-item d-flex">
+                  <i class="bi bi-arrow-right-circle-fill text-success me-2"></i>
+                  <span>Mesurer les progrès et ajuster la trajectoire</span>
+                </li>
+                <li class="list-group-item d-flex">
+                  <i class="bi bi-arrow-right-circle-fill text-success me-2"></i>
+                  <span>Corriger les erreurs tôt plutôt que tard</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="highlight-box mt-4">
+        <h5><i class="bi bi-lightbulb-fill me-2"></i>Insight clé</h5>
+        <p class="mb-0">Planifier ne signifie pas tout prévoir à 100%, mais <strong>réduire l'incertitude</strong>, <strong>donner une direction claire</strong> et <strong>organiser l'effort</strong> de manière efficace. C'est l'art de transformer des objectifs vagues en actions concrètes.</p>
+      </div>
+    </section>
+
+    <section id="exemples" class="mb-5">
+      <h2 class="section-title">🔎 5 exemples détaillés d'échec par absence de planification</h2>
+      
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-briefcase me-2"></i>
+              <h5 class="mb-0">1. Projet professionnel</h5>
+            </div>
+            <div class="card-body">
+              <div class="mb-3">
+                <span class="badge badge-fail p-2 mb-2">Sans plan</span>
+                <ul>
+                  <li>Objectifs mal définis et changeants</li>
+                  <li>Retards répétés et dépassements de budget</li>
+                  <li>Tensions entre équipes et parties prenantes</li>
+                  <li>Résultats en dessous des attentes</li>
+                </ul>
+              </div>
+              <div>
+                <span class="badge badge-success p-2 mb-2">Avec plan</span>
+                <ul>
+                  <li>Feuille de route claire avec jalons mesurables</li>
+                  <li>Responsabilités définies et suivi régulier</li>
+                  <li>Anticipation des risques et ajustements continus</li>
+                  <li>Livraison dans les délais et le budget</li>
+                </ul>
+              </div>
+              <div class="mt-3">
+                <strong>📌 Résultat :</strong> Un projet maîtrisé plutôt que subi
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-person-badge me-2"></i>
+              <h5 class="mb-0">2. Carrière et évolution</h5>
+            </div>
+            <div class="card-body">
+              <div class="mb-3">
+                <span class="badge badge-fail p-2 mb-2">Sans plan</span>
+                <ul>
+                  <li>Opportunités manquées par manque de préparation</li>
+                  <li>Compétences obsolètes non mises à jour</li>
+                  <li>Stagnation professionnelle et frustration</li>
+                  <li>Réactivité aux offres plutôt que proactivité</li>
+                </ul>
+              </div>
+              <div>
+                <span class="badge badge-success p-2 mb-2">Avec plan</span>
+                <ul>
+                  <li>Vision à 3-5 ans avec étapes intermédiaires</li>
+                  <li>Compétences clés ciblées et développées</li>
+                  <li>Formations choisies stratégiquement</li>
+                  <li>Réseau professionnel cultivé activement</li>
+                </ul>
+              </div>
+              <div class="mt-3">
+                <strong>📌 Résultat :</strong> Une carrière construite, pas subie
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-cash-coin me-2"></i>
+              <h5 class="mb-0">3. Gestion financière</h5>
+            </div>
+            <div class="card-body">
+              <div class="mb-3">
+                <span class="badge badge-fail p-2 mb-2">Sans plan</span>
+                <ul>
+                  <li>Dépenses impulsives et achats non essentiels</li>
+                  <li>Absence d'épargne et d'investissement</li>
+                  <li>Stress financier permanent</li>
+                  <li>Impréparation face aux imprévus</li>
+                </ul>
+              </div>
+              <div>
+                <span class="badge badge-success p-2 mb-2">Avec plan</span>
+                <ul>
+                  <li>Budget mensuel avec catégories de dépenses</li>
+                  <li>Objectifs d'épargne et d'investissement clairs</li>
+                  <li>Anticipation des charges et projets futurs</li>
+                  <li>Sécurité financière et tranquillité d'esprit</li>
+                </ul>
+              </div>
+              <div class="mt-3">
+                <strong>📌 Résultat :</strong> Sécurité et sérénité financière
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-journal-text me-2"></i>
+              <h5 class="mb-0">4. Études et formations</h5>
+            </div>
+            <div class="card-body">
+              <div class="mb-3">
+                <span class="badge badge-fail p-2 mb-2">Sans plan</span>
+                <ul>
+                  <li>Révisions désorganisées et inefficaces</li>
+                  <li>Surcharge de dernière minute et stress</li>
+                  <li>Résultats en dessous du potentiel réel</li>
+                  <li>Acquisition superficielle des connaissances</li>
+                </ul>
+              </div>
+              <div>
+                <span class="badge badge-success p-2 mb-2">Avec plan</span>
+                <ul>
+                  <li>Calendrier de révision avec priorités claires</li>
+                  <li>Répétition espacée et méthodes efficaces</li>
+                  <li>Équilibre entre travail et repos</li>
+                  <li>Confiance en soi lors des évaluations</li>
+                </ul>
+              </div>
+              <div class="mt-3">
+                <strong>📌 Résultat :</strong> Performance optimale et confiance
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-4">
+        <div class="col-lg-8 mx-auto">
+          <div class="card">
+            <div class="card-header d-flex align-items-center">
+              <i class="bi bi-heart-fill me-2"></i>
+              <h5 class="mb-0">5. Vie personnelle et équilibre</h5>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <span class="badge badge-fail p-2 mb-2">Sans plan</span>
+                  <ul>
+                    <li>Bonnes intentions jamais réalisées</li>
+                    <li>Déséquilibre vie professionnelle/personnelle</li>
+                    <li>Épuisement et burn-out</li>
+                    <li>Relations négligées par manque de temps</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <span class="badge badge-success p-2 mb-2">Avec plan</span>
+                  <ul>
+                    <li>Temps dédié aux priorités personnelles</li>
+                    <li>Rituels réguliers pour la santé et le bien-être</li>
+                    <li>Limites claires entre vie pro et perso</li>
+                    <li>Discipline douce mais constante</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mt-3 text-center">
+                <strong>📌 Résultat :</strong> Équilibre, épanouissement et constance
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="methode" class="mb-5">
+      <h2 class="section-title">🛠️ Méthode simple de planification en 5 étapes</h2>
+      
+      <div class="process-step animate-in">
+        <div class="step-icon">1</div>
+        <h4>Définir l'objectif final</h4>
+        <p>Posez-vous la question : <strong>"À quoi ressemble la réussite concrète ?"</strong></p>
+        
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <div class="alert alert-success">
+              <h6><i class="bi bi-check-circle-fill me-2"></i>Objectif clair (SMART)</h6>
+              <p class="mb-0">"Augmenter les ventes de 20% d'ici 6 mois en lançant 2 nouveaux produits et en formant l'équipe commerciale."</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert alert-danger">
+              <h6><i class="bi bi-x-circle-fill me-2"></i>Objectif vague</h6>
+              <p class="mb-0">"Vendre plus de produits."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="process-step animate-in">
+        <div class="step-icon">2</div>
+        <h4>Décomposer en actions</h4>
+        <p>Transformez l'objectif en <strong>tâches simples et exécutables</strong>.</p>
+        
+        <div class="warning-box">
+          <h6><i class="bi bi-exclamation-triangle-fill me-2"></i>Règle importante</h6>
+          <p class="mb-0"><strong>"Si une action prend plus de 2 semaines, elle est trop grosse."</strong> Décomposez-la en sous-tâches plus petites.</p>
+        </div>
+        
+        <div class="mt-3">
+          <h6>Exemple de décomposition :</h6>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="tool-card">
+                <h6>Recherche marché</h6>
+                <p>2 jours</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="tool-card">
+                <h6>Design produit</h6>
+                <p>1 semaine</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="tool-card">
+                <h6>Formation équipe</h6>
+                <p>3 jours</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="process-step animate-in">
+        <div class="step-icon">3</div>
+        <h4>Prioriser (l'essentiel d'abord)</h4>
+        <p>Utilisez la règle <strong>80/20</strong> : 20% des actions produisent 80% des résultats.</p>
+        
+        <div class="planning-matrix mt-4">
+          <div class="matrix-cell matrix-urgent">
+            <h6>Urgent & Important</h6>
+            <p>À faire immédiatement</p>
+          </div>
+          <div class="matrix-cell matrix-important">
+            <h6>Important mais pas urgent</h6>
+            <p>Planifier et faire en premier</p>
+          </div>
+          <div class="matrix-cell matrix-not-urgent">
+            <h6>Urgent mais pas important</h6>
+            <p>Déléguer si possible</p>
+          </div>
+          <div class="matrix-cell matrix-not-important">
+            <h6>Ni urgent ni important</h6>
+            <p>Éliminer ou reporter</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="process-step animate-in">
+        <div class="step-icon">4</div>
+        <h4>Planifier dans le temps</h4>
+        <p>Un plan sans date est un rêve. Donnez des échéances réalistes à chaque action.</p>
+        
+        <div class="timeline mt-4">
+          <div class="timeline-item">
+            <div class="timeline-date">Semaine 1</div>
+            <div class="timeline-content">
+              <h6>Analyse et recherche</h6>
+              <p>Étude de marché, benchmark concurrentiel</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Semaine 2-3</div>
+            <div class="timeline-content">
+              <h6>Développement produit</h6>
+              <p>Prototypage, tests utilisateurs</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Semaine 4</div>
+            <div class="timeline-content">
+              <h6>Formation et lancement</h6>
+              <p>Formation équipe, campagne marketing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="process-step animate-in">
+        <div class="step-icon">5</div>
+        <h4>Suivre et ajuster</h4>
+        <p>Un bon plan est vivant. Réévaluez régulièrement et ajustez en fonction des résultats.</p>
+        
+        <div class="success-box mt-3">
+          <h6><i class="bi bi-arrow-repeat me-2"></i>Révision hebdomadaire</h6>
+          <ul class="mb-0">
+            <li><strong>Ce qui a marché :</strong> Identifier les succès à reproduire</li>
+            <li><strong>Ce qui n'a pas marché :</strong> Apprendre des erreurs</li>
+            <li><strong>Ce que j'améliore :</strong> Ajustements pour la semaine suivante</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="outils" class="mb-5">
+      <h2 class="section-title">✅ 5 tips puissants pour éviter l'échec de planification</h2>
+      
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-header text-center">
+              <i class="bi bi-1-circle-fill fs-1 text-primary"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5>Commencez simple</h5>
+              <p>Un plan compliqué ne sera jamais suivi. Commencez avec 3-5 actions clés, pas 50.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-header text-center">
+              <i class="bi bi-2-circle-fill fs-1 text-primary"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5>Écrivez toujours</h5>
+              <p>Ce qui n'est pas écrit n'est pas clair. Un plan mental n'est pas un plan.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-header text-center">
+              <i class="bi bi-3-circle-fill fs-1 text-primary"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5>Planifiez avec marges</h5>
+              <p>Le monde réel contient toujours des imprévus. Ajoutez 20-30% de temps en plus.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-6">
+          <div class="card h-100">
+            <div class="card-header text-center">
+              <i class="bi bi-4-circle-fill fs-1 text-primary"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5>Revoyez régulièrement</h5>
+              <p>Un plan imparfait mais régulièrement revu est meilleur qu'un plan parfait mais abandonné.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-6">
+          <div class="card h-100">
+            <div class="card-header text-center">
+              <i class="bi bi-5-circle-fill fs-1 text-primary"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5>Passez à l'action</h5>
+              <p>Planifier sans agir reste une illusion. La première action doit pouvoir être faite aujourd'hui.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-4">
+        <div class="col-lg-10 mx-auto">
+          <div class="warning-box">
+            <h5><i class="bi bi-exclamation-octagon-fill me-2"></i>Erreurs fréquentes à éviter</h5>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="d-flex">
+                  <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
+                  <span>Attendre d'avoir le plan parfait</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="d-flex">
+                  <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
+                  <span>Confondre planification et rigidité</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="d-flex">
+                  <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
+                  <span>Copier le plan des autres sans adaptation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="simulation" class="mb-5">
+      <h2 class="section-title">📋 Planificateur interactif</h2>
+      
+      <div class="interactive-plan">
+        <h3 class="mb-4">Créez votre plan personnalisé</h3>
+        
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="mb-4">
+              <label for="goalInput" class="form-label fw-bold">1. Définissez votre objectif principal :</label>
+              <input type="text" class="form-control form-control-lg" id="goalInput" placeholder="Ex: Préparer une certification professionnelle en 3 mois">
+            </div>
+            
+            <div class="mb-4">
+              <label class="form-label fw-bold">2. Décomposez en actions (ajoutez jusqu'à 5 actions) :</label>
+              <div id="actionList">
+                <div class="plan-step">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                      <input type="checkbox" class="form-check-input me-2" id="action1">
+                      <label for="action1" class="form-check-label">Rechercher les ressources d'étude nécessaires</label>
+                    </div>
+                    <span class="badge badge-plan">3 jours</span>
+                  </div>
+                </div>
+                <div class="plan-step">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                      <input type="checkbox" class="form-check-input me-2" id="action2">
+                      <label for="action2" class="form-check-label">Créer un planning de révision hebdomadaire</label>
+                    </div>
+                    <span class="badge badge-plan">1 jour</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mt-3">
+                <button class="btn btn-outline-primary btn-sm" onclick="addAction()">
+                  <i class="bi bi-plus-circle me-1"></i>Ajouter une action
+                </button>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <label class="form-label fw-bold">3. Priorisez vos actions :</label>
+              <p>Classez vos actions par ordre d'importance (glissez-déposez) :</p>
+              <div id="priorityList" class="list-group">
+                <div class="list-group-item list-group-item-action" draggable="true">
+                  <i class="bi bi-grip-vertical me-2 text-muted"></i>
+                  Rechercher les ressources d'étude nécessaires
+                </div>
+                <div class="list-group-item list-group-item-action" draggable="true">
+                  <i class="bi bi-grip-vertical me-2 text-muted"></i>
+                  Créer un planning de révision hebdomadaire
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="card h-100">
+              <div class="card-header text-center">
+                <h5 class="mb-0">Progression du plan</h5>
+              </div>
+              <div class="card-body text-center">
+                <div class="progress-circle">
+                  <span>25%</span>
+                </div>
+                <h5 class="mt-3">Votre plan</h5>
+                <p id="goalDisplay">Préparer une certification professionnelle en 3 mois</p>
+                
+                <div class="text-start mt-4">
+                  <h6>Prochaines actions :</h6>
+                  <div class="checklist-item">
+                    <input type="checkbox" class="form-check-input" id="next1" checked>
+                    <label for="next1" class="form-check-label">Définir l'objectif</label>
+                  </div>
+                  <div class="checklist-item">
+                    <input type="checkbox" class="form-check-input" id="next2">
+                    <label for="next2" class="form-check-label">Identifier les actions clés</label>
+                  </div>
+                  <div class="checklist-item">
+                    <input type="checkbox" class="form-check-input" id="next3">
+                    <label for="next3" class="form-check-label">Estimer les durées</label>
+                  </div>
+                  <div class="checklist-item">
+                    <input type="checkbox" class="form-check-input" id="next4">
+                    <label for="next4" class="form-check-label">Planifier dans le calendrier</label>
+                  </div>
+                </div>
+                
+                <button class="btn btn-primary mt-4" onclick="generatePlan()">
+                  <i class="bi bi-download me-1"></i>Télécharger mon plan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="conclusion" class="mb-5">
+      <h2 class="section-title text-center">🏁 Conclusion</h2>
+      
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="quote-card text-center">
+            <p class="fs-4">"Échouer à planifier, c'est choisir l'échec par défaut."</p>
+            <p class="fs-4">"Planifier, c'est choisir consciemment sa direction."</p>
+          </div>
+          
+          <div class="text-center mt-4">
+            <p class="lead">Vous n'avez pas besoin d'un plan parfait, mais d'un plan clair, écrit et suivi.</p>
+            <p class="fs-5">Le reste s'ajuste en chemin.</p>
+            
+            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+              <a href="#simulation" class="btn btn-primary btn-lg">
+                <i class="bi bi-plus-circle me-2"></i>Créer mon premier plan
+              </a>
+              <a href="#concept" class="btn btn-outline-primary btn-lg">
+                <i class="bi bi-arrow-repeat me-2"></i>Revoir les principes
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <h5>Portail de Planification Stratégique</h5>
+          <p>Guide pratique pour le travail, les projets, la carrière et la vie personnelle</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <p class="mb-0">"Si vous échouez à planifier, vous planifiez l'échec"</p>
+          <p class="mb-0">© 2023 - Outil pédagogique de développement personnel et professionnel</p>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12 text-center">
+          <div class="d-flex justify-content-center gap-3">
+            <a href="#" class="text-white"><i class="bi bi-house-door-fill"></i></a>
+            <a href="#concept" class="text-white"><i class="bi bi-lightbulb-fill"></i></a>
+            <a href="#methode" class="text-white"><i class="bi bi-gear-fill"></i></a>
+            <a href="#simulation" class="text-white"><i class="bi bi-tools"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Initialize interactive elements
+    document.addEventListener('DOMContentLoaded', function() {
+      // Setup drag and drop for priority list
+      setupDragAndDrop();
+      
+      // Update goal display
+      const goalInput = document.getElementById('goalInput');
+      const goalDisplay = document.getElementById('goalDisplay');
+      
+      goalInput.addEventListener('input', function() {
+        goalDisplay.textContent = this.value || 'Aucun objectif défini';
+      });
+      
+      // Update progress based on checkboxes
+      const checkboxes = document.querySelectorAll('#actionList input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateProgress);
+      });
+    });
+    
+    // Add new action to the list
+    function addAction() {
+      const actionList = document.getElementById('actionList');
+      const actionCount = actionList.querySelectorAll('.plan-step').length + 1;
+      
+      const newAction = document.createElement('div');
+      newAction.className = 'plan-step';
+      newAction.innerHTML = `
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <input type="checkbox" class="form-check-input me-2" id="action${actionCount}">
+            <label for="action${actionCount}" class="form-check-label">Nouvelle action</label>
+          </div>
+          <span class="badge badge-plan">1 jour</span>
+        </div>
+      `;
+      
+      actionList.appendChild(newAction);
+      
+      // Add event listener to new checkbox
+      newAction.querySelector('input[type="checkbox"]').addEventListener('change', updateProgress);
+      
+      // Also add to priority list
+      const priorityList = document.getElementById('priorityList');
+      const newPriorityItem = document.createElement('div');
+      newPriorityItem.className = 'list-group-item list-group-item-action';
+      newPriorityItem.draggable = true;
+      newPriorityItem.innerHTML = `
+        <i class="bi bi-grip-vertical me-2 text-muted"></i>
+        Nouvelle action
+      `;
+      priorityList.appendChild(newPriorityItem);
+      
+      setupDragAndDrop();
+    }
+    
+    // Update progress circle
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('#actionList input[type="checkbox"]');
+      const total = checkboxes.length;
+      const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+      
+      const progress = total > 0 ? Math.round((checked / total) * 100) : 0;
+      const progressCircle = document.querySelector('.progress-circle');
+      const progressText = document.querySelector('.progress-circle span');
+      
+      // Update progress circle
+      progressCircle.style.background = `conic-gradient(var(--success-color) 0% ${progress}%, #ecf0f1 ${progress}% 100%)`;
+      progressText.textContent = `${progress}%`;
+      
+      // Update next actions checklist
+      const nextCheckboxes = document.querySelectorAll('#simulation input[type="checkbox"]');
+      if (checked >= 1) nextCheckboxes[1].checked = true;
+      if (checked >= 2) nextCheckboxes[2].checked = true;
+    }
+    
+    // Setup drag and drop for priority list
+    function setupDragAndDrop() {
+      const items = document.querySelectorAll('#priorityList .list-group-item');
+      let draggedItem = null;
+      
+      items.forEach(item => {
+        item.addEventListener('dragstart', function() {
+          draggedItem = this;
+          setTimeout(() => {
+            this.style.opacity = '0.5';
+          }, 0);
+        });
+        
+        item.addEventListener('dragend', function() {
+          setTimeout(() => {
+            draggedItem.style.opacity = '1';
+            draggedItem = null;
+          }, 0);
+        });
+        
+        item.addEventListener('dragover', function(e) {
+          e.preventDefault();
+        });
+        
+        item.addEventListener('dragenter', function(e) {
+          e.preventDefault();
+          if (this !== draggedItem) {
+            this.style.backgroundColor = 'rgba(0,0,0,0.1)';
+          }
+        });
+        
+        item.addEventListener('dragleave', function() {
+          this.style.backgroundColor = '';
+        });
+        
+        item.addEventListener('drop', function() {
+          this.style.backgroundColor = '';
+          if (this !== draggedItem) {
+            const allItems = [...this.parentNode.children];
+            const draggedIndex = allItems.indexOf(draggedItem);
+            const dropIndex = allItems.indexOf(this);
+            
+            if (draggedIndex < dropIndex) {
+              this.parentNode.insertBefore(draggedItem, this.nextSibling);
+            } else {
+              this.parentNode.insertBefore(draggedItem, this);
+            }
+          }
+        });
+      });
+    }
+    
+    // Generate and download plan
+    function generatePlan() {
+      const goal = document.getElementById('goalInput').value || "Objectif non spécifié";
+      const actions = [];
+      
+      document.querySelectorAll('#actionList .plan-step').forEach(step => {
+        const label = step.querySelector('label').textContent;
+        const duration = step.querySelector('.badge').textContent;
+        const checked = step.querySelector('input[type="checkbox"]').checked;
+        actions.push({ label, duration, checked });
+      });
+      
+      // Create plan content
+      let planContent = `PLAN D'ACTION\n`;
+      planContent += `====================\n\n`;
+      planContent += `OBJECTIF : ${goal}\n\n`;
+      planContent += `ACTIONS :\n`;
+      
+      actions.forEach((action, index) => {
+        const status = action.checked ? '[✓]' : '[ ]';
+        planContent += `${index + 1}. ${status} ${action.label} (${action.duration})\n`;
+      });
+      
+      planContent += `\nGénéré le ${new Date().toLocaleDateString('fr-FR')}\n`;
+      planContent += `Portail de Planification Stratégique`;
+      
+      // Create download link
+      const blob = new Blob([planContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `mon-plan-${new Date().toISOString().slice(0,10)}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      // Show success message
+      alert('Votre plan a été généré et téléchargé !');
+    }
+    
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Add animation on scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe elements to animate
+    document.querySelectorAll('.process-step, .card, .tool-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
