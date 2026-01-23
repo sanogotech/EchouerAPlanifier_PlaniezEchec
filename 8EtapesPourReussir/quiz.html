@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Ray Dalio - Les 8 Étapes du Succès</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --etape0-color: #6c757d;
+            --etape1-color: #0ea5e9;
+            --etape2-color: #10b981;
+            --etape3-color: #8b5cf6;
+            --etape4-color: #f59e0b;
+            --etape5-color: #ef4444;
+            --etape6-color: #6366f1;
+            --etape7-color: #ec4899;
+            --cycle-color: #059669;
+            --light-bg: #f8fafc;
+            --dark-bg: #0f172a;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a6ae4 0%, #00c9b7 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding-top: 1rem;
+            background-attachment: fixed;
+        }
+
+        .quiz-container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin-top: -1rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .quiz-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .quiz-header h1 {
+            font-weight: 800;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #1a6ae4 0%, #00c9b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .quiz-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .year-badge {
+            background: linear-gradient(135deg, var(--etape3-color) 0%, var(--etape7-color) 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Progress & Score */
+        .progress-container {
+            margin-bottom: 2rem;
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+        }
+
+        #question-counter {
+            font-weight: 600;
+            color: var(--etape1-color);
+            font-size: 1.1rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        #current-score {
+            font-weight: 600;
+            color: var(--etape2-color);
+            font-size: 1.1rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .progress {
+            height: 12px;
+            border-radius: 10px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--etape3-color) 0%, var(--etape1-color) 100%);
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Question Card */
+        #question-card {
+            border: none;
+            border-radius: 15px;
+            padding: 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--etape1-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #question-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(26, 106, 228, 0.1) 0%, transparent 70%);
+        }
+        
+        #question-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .thematic-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            border: 2px solid;
+        }
+
+        .badge-etape0 {
+            background-color: rgba(108, 117, 125, 0.1);
+            border-color: var(--etape0-color);
+            color: var(--etape0-color);
+        }
+
+        .badge-etape1 {
+            background-color: rgba(14, 165, 233, 0.1);
+            border-color: var(--etape1-color);
+            color: var(--etape1-color);
+        }
+
+        .badge-etape2 {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-color: var(--etape2-color);
+            color: var(--etape2-color);
+        }
+
+        .badge-etape3 {
+            background-color: rgba(139, 92, 246, 0.1);
+            border-color: var(--etape3-color);
+            color: var(--etape3-color);
+        }
+
+        .badge-etape4 {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-color: var(--etape4-color);
+            color: var(--etape4-color);
+        }
+
+        .badge-etape5 {
+            background-color: rgba(239, 68, 68, 0.1);
+            border-color: var(--etape5-color);
+            color: var(--etape5-color);
+        }
+
+        .badge-etape6 {
+            background-color: rgba(99, 102, 241, 0.1);
+            border-color: var(--etape6-color);
+            color: var(--etape6-color);
+        }
+
+        .badge-etape7 {
+            background-color: rgba(236, 72, 153, 0.1);
+            border-color: var(--etape7-color);
+            color: var(--etape7-color);
+        }
+
+        .badge-cycle {
+            background-color: rgba(5, 150, 105, 0.1);
+            border-color: var(--cycle-color);
+            color: var(--cycle-color);
+        }
+
+        /* Options */
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            background-color: white;
+            transition: all 0.3s ease;
+            font-family: 'Roboto Mono', monospace;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-btn:hover:not([disabled]) {
+            border-color: var(--etape1-color);
+            background-color: #eff6ff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 106, 228, 0.15);
+        }
+        
+        .option-btn.correct {
+            background-color: #f0fdf4;
+            border-color: var(--etape2-color);
+            color: #065f46;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .option-btn.incorrect {
+            background-color: #fef2f2;
+            border-color: var(--etape5-color);
+            color: #7f1d1d;
+            font-weight: 600;
+        }
+
+        /* Explanation Box */
+        #explanation-box {
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            animation: fadeIn 0.5s ease;
+            border-left: 4px solid;
+        }
+        
+        #explanation-box h5 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .explanation-correct {
+            background-color: #f0fdf4;
+            border-left-color: var(--etape2-color);
+        }
+
+        .explanation-incorrect {
+            background-color: #fef2f2;
+            border-left-color: var(--etape5-color);
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+            border-left: 4px solid var(--etape1-color);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        
+        .tip-box h6 {
+            color: var(--etape1-color);
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-dalio {
+            background: linear-gradient(135deg, var(--etape3-color) 0%, var(--etape1-color) 100%);
+            color: white;
+            border: none;
+        }
+
+        /* Thematic Cards */
+        .theme-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .theme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--etape1-color);
+        }
+        
+        .theme-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--etape1-color) 0%, var(--etape2-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Modal Results */
+        .modal-header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%);
+            color: white;
+            border-radius: 0;
+        }
+
+        .modal-title-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+        
+        .final-score {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            background: linear-gradient(135deg, var(--etape3-color) 0%, var(--etape2-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .score-text {
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .skill-meter {
+            background: var(--light-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(26, 106, 228, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(26, 106, 228, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(26, 106, 228, 0); }
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(26, 106, 228, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quiz-container {
+                padding: 1rem;
+            }
+            
+            .quiz-header {
+                padding: 2rem 1rem;
+            }
+            
+            .quiz-header h1 {
+                font-size: 2rem;
+            }
+            
+            #question-card {
+                padding: 1.5rem;
+            }
+            
+            .quiz-navigation {
+                flex-direction: column;
+            }
+            
+            .nav-btn {
+                width: 100%;
+            }
+        }
+
+        /* Dalio elements */
+        .dalio-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ctext x='10' y='20' font-family='monospace' font-size='12' fill='rgba(26, 106, 228, 0.05)'%3E0 1 2 3%3C/text%3E%3Ctext x='40' y='40' font-family='monospace' font-size='12' fill='rgba(26, 106, 228, 0.05)'%3E4 5 6 7%3C/text%3E%3Ctext x='70' y='60' font-family='monospace' font-size='12' fill='rgba(26, 106, 228, 0.05)'%3E✓ ✗ ↻%3C/text%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .dalio-badge {
+            background: linear-gradient(135deg, var(--etape3-color) 0%, var(--etape2-color) 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .case-study {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--etape1-color);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="dalio-background"></div>
+    
+    <div class="container py-4">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h1><i class="fas fa-sync-alt"></i> Quiz Ray Dalio <i class="fas fa-chart-line"></i></h1>
+                <p>Maîtrisez les 8 étapes du succès selon Ray Dalio et leur application systémique dans vos projets</p>
+                <div class="year-badge">
+                    Objectif : Maîtrise systémique | 100 Questions | Niveau Expert
+                </div>
+            </div>
+            
+            <!-- Configuration Panel -->
+            <div id="settings-panel" class="settings-panel">
+                <h4 class="text-center mb-4"><i class="fas fa-cogs"></i> Configuration du Quiz Ray Dalio</h4>
+                
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <label for="question-count" class="form-label">Nombre de questions :</label>
+                        <select id="question-count" class="form-select">
+                            <option value="20">20 questions (Rapide)</option>
+                            <option value="40">40 questions (Standard)</option>
+                            <option value="60">60 questions (Complet)</option>
+                            <option value="100" selected>100 questions (Expert - Toutes les étapes)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button id="start-quiz-btn" class="btn btn-dalio w-100 pulse-animation">
+                            <i class="fas fa-rocket"></i> Démarrer le Quiz
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h5><i class="fas fa-filter"></i> Étapes à Évaluer</h5>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="etape0" checked>
+                                <label class="form-check-label" for="etape0">
+                                    <i class="fas fa-search text-secondary me-2"></i>Étape 0 : Réalité
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="etape1" checked>
+                                <label class="form-check-label" for="etape1">
+                                    <i class="fas fa-eye text-primary me-2"></i>Étape 1 : Vision
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="etape2" checked>
+                                <label class="form-check-label" for="etape2">
+                                    <i class="fas fa-bullseye text-success me-2"></i>Étape 2 : Objectifs
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="etape3" checked>
+                                <label class="form-check-label" for="etape3">
+                                    <i class="fas fa-exclamation-triangle text-purple me-2"></i>Étape 3 : Problèmes
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="etape4" checked>
+                                <label class="form-check-label" for="etape4">
+                                    <i class="fas fa-diagnoses text-warning me-2"></i>Étape 4 : Diagnostic
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="etape5" checked>
+                                <label class="form-check-label" for="etape5">
+                                    <i class="fas fa-cogs text-danger me-2"></i>Étape 5 : Solutions
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="etape6" checked>
+                                <label class="form-check-label" for="etape6">
+                                    <i class="fas fa-play-circle text-indigo me-2"></i>Étape 6 : Exécution
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="etape7" checked>
+                                <label class="form-check-label" for="etape7">
+                                    <i class="fas fa-graduation-cap text-pink me-2"></i>Étape 7 : Apprentissage
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="cycle" checked>
+                                <label class="form-check-label" for="cycle">
+                                    <i class="fas fa-sync-alt text-teal me-2"></i>Cycle Complet
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="concepts" checked>
+                                <label class="form-check-label" for="concepts">
+                                    <i class="fas fa-brain text-info me-2"></i>Concepts Clés
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Thématiques -->
+                <div class="mt-4">
+                    <h5><i class="fas fa-brain"></i> Les 8 Étapes + Concepts Clés</h5>
+                    <div class="row mt-3">
+                        <div class="col-md-4 mb-3">
+                            <div class="theme-card">
+                                <div class="theme-icon"><i class="fas fa-search"></i></div>
+                                <h6>Étape 0 : Réalité</h6>
+                                <p class="small mb-2">Ancrage factuel, analyse brute, connexion à la réalité sans filtre</p>
+                                <div>
+                                    <span class="dalio-badge">Réalisme</span>
+                                    <span class="dalio-badge">Données</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="theme-card">
+                                <div class="theme-icon"><i class="fas fa-eye"></i></div>
+                                <h6>Étape 1 : Vision</h6>
+                                <p class="small mb-2">Destination inspirante, alignement avec la réalité, phare stratégique</p>
+                                <div>
+                                    <span class="dalio-badge">Inspiration</span>
+                                    <span class="dalio-badge">Direction</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="theme-card">
+                                <div class="theme-icon"><i class="fas fa-bullseye"></i></div>
+                                <h6>Étape 2 : Objectifs</h6>
+                                <p class="small mb-2">Ponts concrets, SMART-Plus, hiérarchisation, responsabilités claires</p>
+                                <div>
+                                    <span class="dalio-badge">Concret</span>
+                                    <span class="dalio-badge">Mesurable</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <div class="theme-card">
+                                <div class="theme-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                                <h6>Étape 3 : Problèmes</h6>
+                                <p class="small mb-2">Identification systématique, signaux précieux, registre des problèmes</p>
+                                <div>
+                                    <span class="dalio-badge">Signaux</span>
+                                    <span class="dalio-badge">Opportunités</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="theme-card">
+                                <div class="theme-icon"><i class="fas fa-diagnoses"></i></div>
+                                <h6>Étape 4 : Diagnostic</h6>
+                                <p class="small mb-2">Causes racines, 5 Pourquoi, analyse systémique, distinction symptôme/cause</p>
+                                <div>
+                                    <span class="dalio-badge">Racine</span>
+                                    <span class="dalio-badge">Analyse</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="theme-card">
+                                <div class="theme-icon"><i class="fas fa-cogs"></i></div>
+                                <h6>Étape 5 : Solutions</h6>
+                                <p class="small mb-2">Systémiques, testables, résilientes, capitalisation, prévention récurrence</p>
+                                <div>
+                                    <span class="dalio-badge">Système</span>
+                                    <span class="dalio-badge">Prévention</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <div class="theme-card">
+                                <div class="theme-icon"><i class="fas fa-play-circle"></i></div>
+                                <h6>Étape 6 : Exécution</h6>
+                                <p class="small mb-2">Discipline, rythme régulier, visibilité totale, adaptation contrôlée</p>
+                                <div>
+                                    <span class="dalio-badge">Discipline</span>
+                                    <span class="dalio-badge">Action</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="theme-card">
+                                <div class="theme-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <h6>Étape 7 : Apprentissage</h6>
+                                <p class="small mb-2">Capitalisation, adaptation, boucle fermée, amélioration continue</p>
+                                <div>
+                                    <span class="dalio-badge">Apprentissage</span>
+                                    <span class="dalio-badge">Adaptation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="theme-card">
+                                <div class="theme-icon"><i class="fas fa-sync-alt"></i></div>
+                                <h6>Cycle Complet</h6>
+                                <p class="small mb-2">Boucle systémique, itérations, accumulation d'apprentissages</p>
+                                <div>
+                                    <span class="dalio-badge">Systémique</span>
+                                    <span class="dalio-badge">Itération</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Content -->
+            <div id="quiz-content" class="d-none">
+                <div class="progress-container">
+                     <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span id="question-counter">Question 1 / 100</span>
+                        <span id="current-score">Score: 0</span>
+                     </div>
+                    <div class="progress">
+                        <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 1%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <div id="question-card" class="card">
+                    <div class="card-body">
+                        <div class="thematic-badge badge-etape1" id="thematic-badge">Étape 1 : Vision</div>
+                        <h2 id="question-text">Chargement de la question...</h2>
+                        <div id="options-container">
+                            <!-- Les options seront insérées ici -->
+                        </div>
+                        <div id="explanation-box" class="d-none">
+                            <h5 id="explanation-title"></h5>
+                            <p id="explanation-text"></p>
+                            <div id="tip-box" class="tip-box d-none">
+                                <h6><i class="fas fa-lightbulb"></i> Pour maîtriser la méthode Dalio</h6>
+                                <p id="tip-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button id="prev-btn" class="btn btn-outline-secondary nav-btn" disabled>
+                        <i class="fas fa-arrow-left"></i> Précédent
+                    </button>
+                    <button id="next-btn" class="btn btn-dalio nav-btn">
+                        Suivant <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button id="finish-btn" class="btn btn-success nav-btn d-none">
+                        <i class="fas fa-trophy"></i> Terminer & Voir les Résultats
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Résultats -->
+    <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultsModalLabel">
+                        <i class="fas fa-chart-line modal-title-icon"></i>Résultats du Quiz Ray Dalio
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="text-center mb-4">
+                        <h4 class="score-text">Votre maîtrise de la méthode Dalio :</h4>
+                        <p class="final-score" id="final-score-percentage">0%</p>
+                        <p class="text-muted fs-5">
+                            <span id="final-score-correct">0</span> bonnes réponses sur 
+                            <span id="final-score-total">0</span> questions
+                        </p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="skill-meter">
+                                <h6><i class="fas fa-cogs"></i> Compétences Systémiques</h6>
+                                <div class="progress mt-2" style="height: 20px;">
+                                    <div id="systemic-skills" class="progress-bar bg-primary" style="width: 0%;"></div>
+                                </div>
+                                <p id="systemic-skills-text" class="mt-2 small">Évaluation en cours...</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="skill-meter">
+                                <h6><i class="fas fa-play-circle"></i> Compétences d'Exécution</h6>
+                                <div class="progress mt-2" style="height: 20px;">
+                                    <div id="execution-skills" class="progress-bar bg-success" style="width: 0%;"></div>
+                                </div>
+                                <p id="execution-skills-text" class="mt-2 small">Évaluation en cours...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div id="final-recommendations">
+                        <!-- Recommandations seront insérées ici -->
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5><i class="fas fa-road"></i> Roadmap d'amélioration</h5>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="alert alert-primary">
+                                    <h6><i class="fas fa-graduation-cap"></i> Court terme : Renforcement</h6>
+                                    <p id="short-term" class="small mb-0">Chargement...</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="alert alert-success">
+                                    <h6><i class="fas fa-rocket"></i> Long terme : Maîtrise</h6>
+                                    <p id="long-term" class="small mb-0">Chargement...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times"></i> Fermer
+                    </button>
+                    <button type="button" class="btn btn-dalio" id="restart-quiz-btn">
+                        <i class="fas fa-redo"></i> Recommencer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Questions Ray Dalio - 100 questions réparties en 9 thématiques
+        const quizData = {
+            questions: [
+                // ============ ÉTAPE 0: RÉALITÉ (12 questions) ============
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Selon Ray Dalio, quelle est la première étape indispensable avant de définir une vision ?",
+                    options: [
+                        "Se connecter à la réalité telle qu'elle est, pas telle qu'on la souhaite",
+                        "Analyser la concurrence",
+                        "Définir des objectifs financiers",
+                        "Créer un business plan"
+                    ],
+                    correctAnswer: "Se connecter à la réalité telle qu'elle est, pas telle qu'on la souhaite",
+                    explanation: "L'étape 0 consiste à ancrer son projet dans la réalité brute, sans filtre ni illusion. C'est le fondement de tout le cycle Dalio.",
+                    tip: "Sans cette étape, la vision risque d'être déconnectée et les objectifs irréalistes."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Quel outil Dalio recommande-t-il pour réaliser un 'Reality Check' honnête ?",
+                    options: [
+                        "Un SWOT radicalement honnête, sans auto-censure",
+                        "Une analyse financière détaillée",
+                        "Un brainstorming créatif",
+                        "Une étude de marché quantitative"
+                    ],
+                    correctAnswer: "Un SWOT radicalement honnête, sans auto-censure",
+                    explanation: "Dalio insiste sur l'honnêteté radicale dans l'analyse SWOT, en incluant toutes les données inconfortables.",
+                    tip: "Les vérités difficiles à accepter sont souvent les plus importantes pour la suite."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Que représente l'écart entre 'où on aimerait être' et 'où on est réellement' selon Dalio ?",
+                    options: [
+                        "L'espace de travail et d'amélioration",
+                        "Un indicateur d'échec",
+                        "Un problème de motivation",
+                        "Une opportunité marketing"
+                    ],
+                    correctAnswer: "L'espace de travail et d'amélioration",
+                    explanation: "Cet écart n'est pas un échec mais l'espace concret dans lequel le travail d'amélioration va s'opérer.",
+                    tip: "Mesurer précisément cet écart permet de définir des objectifs réalistes à l'étape 2."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Quelle est la principale erreur que Dalio observe dans l'étape 0 ?",
+                    options: [
+                        "S'autocensurer et éviter les vérités inconfortables",
+                        "Passer trop de temps sur l'analyse",
+                        "Ne pas consulter assez d'experts",
+                        "Se concentrer uniquement sur les forces"
+                    ],
+                    correctAnswer: "S'autocensurer et éviter les vérités inconfortables",
+                    explanation: "La tendance naturelle est de se protéger des vérités difficiles, ce qui compromet toute la suite du processus.",
+                    tip: "Créez un environnement où les vérités difficiles peuvent être exprimées sans crainte."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Dans le REX Nexus, quel était le principal écart de réalité découvert ?",
+                    options: [
+                        "L'équipe manquait d'expérience en scaling d'infrastructure",
+                        "Le budget était insuffisant",
+                        "Le marché était saturé",
+                        "La technologie choisie était obsolète"
+                    ],
+                    correctAnswer: "L'équipe manquait d'expérience en scaling d'infrastructure",
+                    explanation: "Cette vérité difficile a permis de recruter les compétences manquantes plutôt que de faire face à l'échec plus tard.",
+                    tip: "Les lacunes de compétences identifiées tôt deviennent des opportunités de renforcement d'équipe."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Combien de temps l'équipe Nexus a-t-elle consacré à l'étape 0 ?",
+                    options: [
+                        "2 semaines d'analyse intensive",
+                        "1 mois complet",
+                        "3 jours seulement",
+                        "6 semaines avec consultants"
+                    ],
+                    correctAnswer: "2 semaines d'analyse intensive",
+                    explanation: "Ce temps investi en amont a permis d'économiser plusieurs mois de travail mal orienté par la suite.",
+                    tip: "Investissez proportionnellement dans l'étape 0 : plus le projet est complexe, plus cette étape est cruciale."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Quel pourcentage des hypothèses de départ Nexus a été changé après l'étape 0 ?",
+                    options: [
+                        "60%",
+                        "20%",
+                        "40%",
+                        "80%"
+                    ],
+                    correctAnswer: "60%",
+                    explanation: "La confrontation à la réalité a invalidé la majorité des hypothèses initiales, montrant leur déconnexion.",
+                    tip: "Si moins de 30% de vos hypothèses changent après l'étape 0, vous n'êtes probablement pas assez critique."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Selon Dalio, pourquoi est-il essentiel de valider les conclusions de l'étape 0 avec un regard extérieur ?",
+                    options: [
+                        "Pour contrer les biais cognitifs et les angles morts",
+                        "Pour obtenir des financements",
+                        "Pour tester le pitch",
+                        "Pour créer un effet d'annonce"
+                    ],
+                    correctAnswer: "Pour contrer les biais cognitifs et les angles morts",
+                    explanation: "Un regard extérieur impartial permet de repérer ce que l'équipe, trop impliquée, ne voit pas.",
+                    tip: "Choisissez des personnes qui n'ont pas d'intérêt dans votre projet pour une validation vraiment objective."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Quelle technique Dalio recommande-t-il pour collecter les perceptions internes ?",
+                    options: [
+                        "Feedback 360° anonymisé",
+                        "Entretiens individuels dirigés",
+                        "Questionnaires publics",
+                        "Réunions de team building"
+                    ],
+                    correctAnswer: "Feedback 360° anonymisé",
+                    explanation: "L'anonymat permet d'obtenir des retours plus honnêtes et moins influencés par les relations hiérarchiques.",
+                    tip: "Assurez-vous que l'anonymat est réel pour obtenir des feedbacks vraiment sincères."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Que mesure le 'benchmark brutal' recommandé par Dalio ?",
+                    options: [
+                        "La comparaison sans complaisance avec les meilleurs du secteur",
+                        "Les performances financières historiques",
+                        "La satisfaction client moyenne",
+                        "Le taux de croissance du marché"
+                    ],
+                    correctAnswer: "La comparaison sans complaisance avec les meilleurs du secteur",
+                    explanation: "Se comparer aux meilleurs révèle les écarts réels de performance, pas seulement les améliorations par rapport à soi-même.",
+                    tip: "Choisissez des benchmarks pertinents mais ambitieux - comparer à des médiocres donne une fausse impression de compétence."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Dans l'analyse de réalité, que faut-il prioriser selon Dalio ?",
+                    options: [
+                        "Les données factuelles et mesurables",
+                        "Les opinions des experts",
+                        "Les tendances du marché",
+                        "Les retours clients"
+                    ],
+                    correctAnswer: "Les données factuelles et mesurables",
+                    explanation: "Les opinions sont subjectives, les données sont objectives. Basez vos conclusions sur ce qui est mesurable.",
+                    tip: "Quand vous manquez de données, commencez par en collecter avant de prendre des décisions importantes."
+                },
+                {
+                    thematic: "Étape 0 : Réalité",
+                    question: "Quel est le résultat tangible attendu de l'étape 0 ?",
+                    options: [
+                        "Un document d'ancrage réaliste partagé par toute l'équipe",
+                        "Un plan d'action détaillé",
+                        "Une présentation pour investisseurs",
+                        "Un cahier des charges technique"
+                    ],
+                    correctAnswer: "Un document d'ancrage réaliste partagé par toute l'équipe",
+                    explanation: "Ce document sert de référence commune et évite les divergences de perception par la suite.",
+                    tip: "Faites valider ce document par tous les membres de l'équipe pour assurer un alignement complet."
+                },
+
+                // ============ ÉTAPE 1: VISION (12 questions) ============
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Quelle est la caractéristique principale d'une vision Dalio-compatible ?",
+                    options: [
+                        "Elle est inspirante mais ancrée dans la réalité de l'étape 0",
+                        "Elle est extrêmement ambitieuse et disruptive",
+                        "Elle est chiffrée et mesurable",
+                        "Elle est secrète et partagée uniquement avec les dirigeants"
+                    ],
+                    correctAnswer: "Elle est inspirante mais ancrée dans la réalité de l'étape 0",
+                    explanation: "Une vision doit donner de l'élan sans être déconnectée des contraintes réelles identifiées à l'étape 0.",
+                    tip: "Une bonne vision fait rêver sans faire fantasmer."
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Que signifie 'Vision 3D' selon Dalio ?",
+                    options: [
+                        "Impact (quoi), valeurs (comment), identité (qui)",
+                        "Court, moyen et long terme",
+                        "Produit, marché, équipe",
+                        "Technique, commercial, financier"
+                    ],
+                    correctAnswer: "Impact (quoi), valeurs (comment), identité (qui)",
+                    explanation: "Cette approche tridimensionnelle assure que la vision couvre tous les aspects essentiels du projet.",
+                    tip: "Une vision complète répond aux trois questions : Quoi changer ? Comment le faire ? Qui sommes-nous pour le faire ?"
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Quelle méthode Dalio recommande-t-il pour définir le 'Pourquoi Ultime' ?",
+                    options: [
+                        "Les 5 niveaux de 'pourquoi' pour atteindre la racine",
+                        "Le brainstorming en équipe",
+                        "L'analyse SWOT approfondie",
+                        "La consultation d'experts"
+                    ],
+                    correctAnswer: "Les 5 niveaux de 'pourquoi' pour atteindre la racine",
+                    explanation: "En demandant 'pourquoi' cinq fois de suite, on dépasse les motivations superficielles pour atteindre la raison d'être profonde.",
+                    tip: "Arrêtez-vous quand la réponse devient émotionnelle plutôt que rationnelle - c'est le 'pourquoi ultime'."
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Quel test de clarté Dalio propose-t-il pour une vision ?",
+                    options: [
+                        "Un nouveau membre peut-il l'expliquer en 2 minutes ?",
+                        "Les investisseurs l'approuvent-ils immédiatement ?",
+                        "Est-elle résumable en un slogan accrocheur ?",
+                        "Les chiffres sont-ils réalistes ?"
+                    ],
+                    correctAnswer: "Un nouveau membre peut-il l'expliquer en 2 minutes ?",
+                    explanation: "Si la vision n'est pas compréhensible et communicable simplement, elle ne pourra pas aligner l'équipe.",
+                    tip: "Testez régulièrement ce critère avec de nouvelles recrues pour évaluer la clarté de votre vision."
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Dans le REX Nexus, comment la vision a-t-elle évolué après l'étape 0 ?",
+                    options: [
+                        "De 'plateforme sociale avancée' à 'outil intuitif pour petites communautés'",
+                        "De 'solution B2C' à 'solution B2B'",
+                        "De 'gratuit' à 'freemium'",
+                        "De 'national' à 'international'"
+                    ],
+                    correctAnswer: "De 'plateforme sociale avancée' à 'outil intuitif pour petites communautés'",
+                    explanation: "La vision s'est recentrée sur la simplicité et un public spécifique après la confrontation à la réalité.",
+                    tip: "Une vision qui évolue n'est pas un échec, c'est un signe d'apprentissage et d'adaptation."
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Quel horizon temporel Dalio recommande-t-il pour une vision ?",
+                    options: [
+                        "3-5 ans, avec jalons intermédiaires clairs",
+                        "1 an maximum pour rester agile",
+                        "10 ans pour être vraiment ambitieux",
+                        "Variable selon le secteur"
+                    ],
+                    correctAnswer: "3-5 ans, avec jalons intermédiaires clairs",
+                    explanation: "Cet horizon est suffisamment lointain pour être stratégique mais assez proche pour rester tangible.",
+                    tip: "Décomposez votre vision en jalons annuels pour la rendre plus gérable et mesurable."
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Pourquoi l'alignement équipe est-il crucial dans la définition de la vision ?",
+                    options: [
+                        "Parce qu'une vision non partagée ne mobilise pas",
+                        "Parce que chaque département a ses propres objectifs",
+                        "Parce que les investisseurs exigent un consensus",
+                        "Parce que cela améliore la communication externe"
+                    ],
+                    correctAnswer: "Parce qu'une vision non partagée ne mobilise pas",
+                    explanation: "Une vision créée par la direction seule est rarement adoptée avec enthousiasme par les équipes.",
+                    tip: "Organisez des ateliers de cocréation pour que chacun se sente propriétaire de la vision."
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Que doit permettre une bonne vision selon Dalio ?",
+                    options: [
+                        "Donner un cadre pour prioriser les décisions",
+                        "Garantir le succès financier",
+                        "Attirer les médias",
+                        "Séduire les talents les plus chers"
+                    ],
+                    correctAnswer: "Donner un cadre pour prioriser les décisions",
+                    explanation: "Face à un choix difficile, la question 'Quelle option nous rapproche le plus de notre vision ?' doit donner la réponse.",
+                    tip: "Utilisez systématiquement votre vision comme filtre décisionnel pour rester aligné."
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Comment Dalio recommande-t-il d'intégrer les valeurs dans la vision ?",
+                    options: [
+                        "En les explicitant comme partie intégrante du 'comment'",
+                        "En les gardant séparées pour plus de flexibilité",
+                        "En les réservant à la communication RH",
+                        "En les adaptant à chaque projet"
+                    ],
+                    correctAnswer: "En les explicitant comme partie intégrante du 'comment'",
+                    explanation: "Les valeurs définissent comment vous comptez atteindre votre vision, pas seulement ce que vous voulez atteindre.",
+                    tip: "Des valeurs claires aident à prendre des décisions cohérentes quand la vision ne donne pas de réponse évidente."
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Quelle est l'erreur la plus courante dans la définition d'une vision selon Dalio ?",
+                    options: [
+                        "La rendre trop vague pour éviter les engagements",
+                        "La rendre trop détaillée et rigide",
+                        "La garder secrète pour éviter la concurrence",
+                        "La changer trop fréquemment"
+                    ],
+                    correctAnswer: "La rendre trop vague pour éviter les engagements",
+                    explanation: "Une vision floue permet d'éviter les désaccords immédiats mais rend impossible tout alignement à long terme.",
+                    tip: "Préférez une vision précise qui crée des désaccords constructifs plutôt qu'une vision vague qui masque les divergences."
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Comment tester la solidité d'une vision avant de la valider ?",
+                    options: [
+                        "La soumettre à des scénarios contraires et voir si elle résiste",
+                        "Demander l'approbation du conseil d'administration",
+                        "Vérifier qu'elle est en accord avec les tendances du marché",
+                        "S'assurer qu'elle est financièrement viable"
+                    ],
+                    correctAnswer: "La soumettre à des scénarios contraires et voir si elle résiste",
+                    explanation: "Une vision solide doit pouvoir guider même dans des conditions difficiles ou imprévues.",
+                    tip: "Testez votre vision avec des 'et si...' pessimistes pour vérifier sa résilience."
+                },
+                {
+                    thematic: "Étape 1 : Vision",
+                    question: "Quel est le rôle de la vision dans le cycle complet des 8 étapes ?",
+                    options: [
+                        "Elle sert de phare stratégique qui guide toutes les autres étapes",
+                        "Elle détermine le budget alloué au projet",
+                        "Elle fixe les échéances légales",
+                        "Elle définit la structure organisationnelle"
+                    ],
+                    correctAnswer: "Elle sert de phare stratégique qui guide toutes les autres étapes",
+                    explanation: "Chaque étape ultérieure doit contribuer à se rapprocher de cette vision, qui est la destination finale.",
+                    tip: "Revenez régulièrement à votre vision pour vérifier que toutes les étapes y contribuent encore."
+                },
+
+                // ============ ÉTAPE 2: OBJECTIFS (12 questions) ============
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Que représente l'étape 2 dans le cycle Dalio ?",
+                    options: [
+                        "Les ponts concrets entre la réalité présente et la vision future",
+                        "La planification détaillée des ressources",
+                        "L'analyse des risques potentiels",
+                        "La répartition des tâches dans l'équipe"
+                    ],
+                    correctAnswer: "Les ponts concrets entre la réalité présente et la vision future",
+                    explanation: "Les objectifs sont les étapes intermédiaires mesurables qui permettent de passer de la situation actuelle à la vision souhaitée.",
+                    tip: "Chaque objectif doit clairement contribuer à réduire l'écart identifié entre réalité et vision."
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Qu'est-ce que la méthode SMART-Plus recommandée par Dalio ?",
+                    options: [
+                        "SMAT classique enrichi de Priorisation et Responsable",
+                        "SMART avec des indicateurs avancés",
+                        "SMART adapté aux projets agiles",
+                        "SMART avec revue hebdomadaire"
+                    ],
+                    correctAnswer: "SMAT classique enrichi de Priorisation et Responsable",
+                    explanation: "Dalio ajoute deux dimensions cruciales : la priorisation (classement clair) et la responsabilité (personne désignée).",
+                    tip: "Un objectif sans responsable identifié a 80% de chances de ne pas être atteint."
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Quelle est la 'Règle des 3' de Dalio pour les objectifs ?",
+                    options: [
+                        "Maximum 3 objectifs prioritaires par période",
+                        "3 niveaux de difficulté par objectif",
+                        "3 personnes maximum par objectif",
+                        "3 mois maximum pour chaque objectif"
+                    ],
+                    correctAnswer: "Maximum 3 objectifs prioritaires par période",
+                    explanation: "Au-delà de 3 objectifs prioritaires, l'attention et les ressources se diluent trop pour être efficaces.",
+                    tip: "Si vous avez plus de 3 objectifs, priorisez-les et traitez les autres comme secondaires."
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Dans le REX Nexus, comment les objectifs ont-ils évolué après application de la méthode ?",
+                    options: [
+                        "10 objectifs vagues → 3 objectifs SMART-Plus précis",
+                        "5 objectifs → 10 objectifs détaillés",
+                        "Objectifs annuels → Objectifs trimestriels",
+                        "Objectifs individuels → Objectifs collectifs"
+                    ],
+                    correctAnswer: "10 objectifs vagues → 3 objectifs SMART-Plus précis",
+                    explanation: "La précision a remplacé la quantité, avec des responsabilités claires et des indicateurs mesurables.",
+                    tip: "La qualité des objectifs compte plus que leur quantité. Mieux vaut 3 objectifs parfaitement définis que 10 vagues."
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Quelle matrice Dalio recommande-t-il pour prioriser les objectifs ?",
+                    options: [
+                        "Matrice impact/effort",
+                        "Matrice d'Eisenhower",
+                        "Matrice BCG",
+                        "Matrice SWOT"
+                    ],
+                    correctAnswer: "Matrice impact/effort",
+                    explanation: "Cette matrice permet d'identifier les objectifs qui apportent le plus de valeur pour l'effort investi.",
+                    tip: "Commencez toujours par les objectifs à fort impact et faible effort - ce sont les 'quick wins'."
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Quelle est la hiérarchie des objectifs selon Dalio ?",
+                    options: [
+                        "Stratégiques → Tactiques → Opérationnels",
+                        "Long terme → Moyen terme → Court terme",
+                        "Financiers → Opérationnels → Humains",
+                        "Principaux → Secondaires → Tertiaires"
+                    ],
+                    correctAnswer: "Stratégiques → Tactiques → Opérationnels",
+                    explanation: "Les objectifs stratégiques découlent de la vision, les tactiques les déclinent par domaine, les opérationnels définissent les actions concrètes.",
+                    tip: "Assurez-vous que chaque objectif tactique contribue à au moins un objectif stratégique."
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Pourquoi Dalio insiste-t-il sur la désignation d'un responsable unique par objectif ?",
+                    options: [
+                        "Pour éliminer les zones grises de responsabilité",
+                        "Pour faciliter le reporting hiérarchique",
+                        "Pour réduire les coûts de coordination",
+                        "Pour accélérer les prises de décision"
+                    ],
+                    correctAnswer: "Pour éliminer les zones grises de responsabilité",
+                    explanation: "Quand tout le monde est responsable, personne ne l'est vraiment. Un responsable unique assure l'accountability.",
+                    tip: "Le responsable peut (et doit) déléguer, mais reste ultimement redevable de l'atteinte de l'objectif."
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Comment Dalio recommande-t-il de traiter les objectifs conflictuels ?",
+                    options: [
+                        "Les prioriser clairement plutôt que de chercher un compromis",
+                        "Les fusionner en un objectif unique",
+                        "Les assigner à différentes équipes",
+                        "Les reporter à la période suivante"
+                    ],
+                    correctAnswer: "Les prioriser clairement plutôt que de chercher un compromis",
+                    explanation: "Un compromis dilue souvent les deux objectifs. Mieux vaut en choisir un clairement comme priorité.",
+                    tip: "Quand deux objectifs semblent incompatibles, revenez à la vision : lequel y contribue le plus ?"
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Quel est le piège courant dans la définition des objectifs selon Dalio ?",
+                    options: [
+                        "Définir des objectifs basés sur ce qui est facile à mesurer plutôt que ce qui est important",
+                        "Trop impliquer l'équipe dans leur définition",
+                        "Ne pas les revoir assez fréquemment",
+                        "Les rendre trop ambitieux"
+                    ],
+                    correctAnswer: "Définir des objectifs basés sur ce qui est facile à mesurer plutôt que ce qui est important",
+                    explanation: "Ce biais conduit à mesurer l'activité plutôt que l'impact, et à rater ce qui compte vraiment.",
+                    tip: "Commencez toujours par définir ce qui est important, puis cherchez comment le mesurer."
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Quelle fréquence de revue Dalio recommande-t-il pour les objectifs ?",
+                    options: [
+                        "Revue trimestrielle avec ajustements si nécessaire",
+                        "Revue mensuelle systématique",
+                        "Revue annuelle seulement",
+                        "Revue hebdomadaire détaillée"
+                    ],
+                    correctAnswer: "Revue trimestrielle avec ajustements si nécessaire",
+                    explanation: "Cette fréquence permet à la fois stabilité et flexibilité, sans micro-management excessif.",
+                    tip: "Des revues trop fréquentes créent de l'instabilité, des revues trop rares réduisent l'agilité."
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Comment Dalio recommande-t-il de lier les objectifs aux indicateurs de performance ?",
+                    options: [
+                        "Chaque objectif doit avoir au moins un indicateur de résultat et un indicateur de progression",
+                        "Un seul indicateur principal par objectif pour plus de clarté",
+                        "Des indicateurs quantitatifs uniquement",
+                        "Les indicateurs doivent être définis après l'atteinte de l'objectif"
+                    ],
+                    correctAnswer: "Chaque objectif doit avoir au moins un indicateur de résultat et un indicateur de progression",
+                    explanation: "Les indicateurs de résultat mesurent l'atteinte finale, les indicateurs de progression permettent de piloter en cours de route.",
+                    tip: "Un bon indicateur de progression vous alerte assez tôt pour pouvoir corriger le tir si nécessaire."
+                },
+                {
+                    thematic: "Étape 2 : Objectifs",
+                    question: "Que faire quand un objectif n'est pas atteint selon Dalio ?",
+                    options: [
+                        "Analyser les causes racines et en tirer des apprentissages pour le cycle suivant",
+                        "Sanctionner le responsable désigné",
+                        "Abandonner l'objectif et passer au suivant",
+                        "Le reformuler pour qu'il soit atteignable"
+                    ],
+                    correctAnswer: "Analyser les causes racines et en tirer des apprentissages pour le cycle suivant",
+                    explanation: "Un objectif non atteint n'est pas un échec s'il produit un apprentissage valable pour l'itération suivante.",
+                    tip: "Documentez systématiquement les raisons des non-atteintes - ces apprentissages valent souvent plus que l'atteinte elle-même."
+                },
+
+                // ============ ÉTAPE 3: PROBLÈMES (12 questions) ============
+                {
+                    thematic: "Étape 3 : Problèmes",
+                    question: "Comment Dalio définit-il un 'problème' dans son système ?",
+                    options: [
+                        "Un signal précieux et une opportunité d'apprentissage",
+                        "Un échec ou une défaillance à corriger",
+                        "Un obstacle à éliminer rapidement",
+                        "Un risque à mitiger"
+                    ],
+                    correctAnswer: "Un signal précieux et une opportunité d'apprentissage",
+                    explanation: "Changer de perspective sur les problèmes transforme la culture d'entreprise et encourage leur identification proactive.",
+                    tip: "Récompensez l'identification des problèmes, ne punissez pas le messager."
+                },
+                {
+                    thematic: "Étape 3 : Problèmes",
+                    question: "Quel est l'outil principal recommandé par Dalio pour l'identification systématique des problèmes ?",
+                    options: [
+                        "Un registre des problèmes centralisé et accessible",
+                        "Des réunions de crise hebdomadaires",
+                        "Un système de tickets informatisé",
+                        "Des audits réguliers par des externes"
+                    ],
+                    correctAnswer: "Un registre des problèmes centralisé et accessible",
+                    explanation: "Ce registre permet de suivre les problèmes dans le temps, d'identifier les patterns et d'éviter la mémoire volatile.",
+                    tip: "Un problème non documenté est un problème qui risque de se répéter."
+                },
+                {
+                    thematic: "Étape 3 : Problèmes",
+                    question: "Comment Dalio recommande-t-il de catégoriser les problèmes ?",
+                    options: [
+                        "Technique, processus, humain, externe",
+                        "Urgent/important selon la matrice d'Eisenhower",
+                        "Coût, qualité, délai",
+                        "Stratégique, opérationnel, tactique"
+                    ],
+                    correctAnswer: "Technique, processus, humain, externe",
+                    explanation: "Cette taxonomie aide à identifier les types récurrents de problèmes et à appliquer les bonnes solutions.",
+                    tip: "Certains types de problèmes nécessitent des approches différentes - un problème humain ne se résout pas comme un problème technique."
+                },
+                                {
+                    thematic: "Étape 3 : Problèmes",
+                    question: "Quelle matrice Dalio utilise-t-il pour prioriser les problèmes ?",
+                    options: [
+                        "Gravité x Fréquence",
+                        "Coût x Complexité",
+                        "Impact x Probabilité",
+                        "Urgence x Importance"
+                    ],
+                    correctAnswer: "Gravité x Fréquence",
+                    explanation: "Dalio utilise une matrice bidimensionnelle croisant la gravité (impact du problème) et la fréquence (combien de fois il se produit). Les problèmes graves et fréquents sont les priorités absolues.",
+                    tip: "Traitement prioritaire des problèmes en haut à droite de la matrice (haute gravité/haute fréquence) - c'est là que l'optimisation aura l'impact le plus significatif."
+                },
+              {
+                    thematic: "Étape 3 : Problèmes",
+                    question: "Quelle matrice Dalio utilise-t-il pour prioriser les problèmes ?",
+                    options: [
+                        "Gravité x Fréquence",
+                        "Coût x Complexité",
+                        "Impact x Probabilité",
+                        "Urgence x Importance"
+                    ],
+                    correctAnswer: "Gravité x Fréquence",
+                    explanation: "Les problèmes graves et fréquents sont les priorités absolues, car ils ont l'impact le plus important.",
+                    tip: "Traitement d'abord des problèmes à haute gravité et haute fréquence - c'est là que l'amélioration aura le plus d'impact."
+                },
+                {
+                    thematic: "Étape 3 : Problèmes",
+                    question: "Quel problème majeur l'équipe Nexus a-t-elle identifié concernant les délais ?",
+                    options: [
+                        "Dépassement systématique des estimations de développement",
+                        "Manque de communication avec les clients",
+                        "Problèmes techniques récurrents",
+                        "Définition imprécise des fonctionnalités"
+                    ],
+                    correctAnswer: "Dépassement systématique des estimations de développement",
+                    explanation: "Ce problème avait un impact direct sur la crédibilité et la trésorerie, avec un retard moyen de 40%.",
+                    tip: "Un problème récurrent même s'il semble 'normal' dans votre culture doit être identifié et traité."
+                },
+                {
+                    thematic: "Étape 3 : Problèmes",
+                    question: "Comment Dalio recommande-t-il de documenter un problème ?",
+                    options: [
+                        "Description factuelle sans jugement ni blâme",
+                        "Avec attribution de responsabilité immédiate",
+                        "En incluant des solutions possibles",
+                        "Seulement si le problème est grave"
+                    ],
+                    correctAnswer: "Description factuelle sans jugement ni blâme",
+                    explanation: "Une description neutre évite les réactions défensives et permet une analyse objective des causes.",
+                    tip: "Utilisez des données et des faits concrets plutôt que des impressions ou des jugements."
+                },
+                {
+                    thematic: "ÉTAPE 4: DIAGNOSTIC (12 questions)",
+                    question: "Quelle est l'étape critique qui suit l'identification des problèmes selon Dalio ?",
+                    options: [
+                        "Diagnostiquer les causes racines",
+                        "Proposer des solutions immédiates",
+                        "Assigner des responsables",
+                        "Évaluer les impacts financiers"
+                    ],
+                    correctAnswer: "Diagnostiquer les causes racines",
+                    explanation: "Traiter un symptôme sans comprendre sa cause racine garantit sa réapparition.",
+                    tip: "Ne passez jamais directement de l'identification du problème à la solution sans diagnostic approfondi."
+                },
+                {
+                    thematic: "Étape 4 : Diagnostic",
+                    question: "Quelle est la méthode des '5 Pourquoi' recommandée par Dalio ?",
+                    options: [
+                        "Itérer la question 'pourquoi' cinq fois pour atteindre la cause fondamentale",
+                        "Demander pourquoi à cinq personnes différentes",
+                        "Analyser cinq scénarios possibles",
+                        "Utiliser cinq indicateurs de mesure"
+                    ],
+                    correctAnswer: "Itérer la question 'pourquoi' cinq fois pour atteindre la cause fondamentale",
+                    explanation: "Cette technique simple mais puissante permet de creuser au-delà des causes apparentes pour trouver la racine.",
+                    tip: "Arrêtez-vous quand vous atteignez une cause sur laquelle vous pouvez agir, pas forcément au cinquième 'pourquoi'."
+                },
+                {
+                    thematic: "Étape 4 : Diagnostic",
+                    question: "Quelle cause racine l'équipe Nexus a-t-elle découverte pour les dépassements de délais ?",
+                    options: [
+                        "Culture de l'action immédiate au détriment de la planification rigoureuse",
+                        "Manque de compétences techniques",
+                        "Outils inadaptés",
+                        "Sous-effectif chronique"
+                    ],
+                    correctAnswer: "Culture de l'action immédiate au détriment de la planographie rigoureuse",
+                    explanation: "Le problème n'était pas technique mais culturel - la pression pour 'démarrer le codage rapidement' prime sur la planification.",
+                    tip: "Les causes racines sont souvent culturelles ou organisationnelles plutôt que techniques."
+                },
+                {
+                    thematic: "Étape 4 : Diagnostic",
+                    question: "Quel outil Dalio recommande-t-il pour l'analyse multivariée des causes ?",
+                    options: [
+                        "Diagramme d'Ishikawa (diagramme en arête de poisson)",
+                        "Matrice de décision",
+                        "Analyse SWOT",
+                        "Cartographie des processus"
+                    ],
+                    correctAnswer: "Diagramme d'Ishikawa (diagramme en arête de poisson)",
+                    explanation: "Cet outil permet d'explorer systématiquement différentes catégories de causes potentielles : méthodes, machines, main d'œuvre, etc.",
+                    tip: "Utilisez ce diagramme en équipe pour éviter les biais individuels et couvrir tous les angles."
+                },
+                {
+                    thematic: "Étape 4 : Diagnostic",
+                    question: "Quelle distinction cruciale Dalio fait-il dans le diagnostic ?",
+                    options: [
+                        "Distinguer corrélation et causalité",
+                        "Différencier problèmes internes et externes",
+                        "Séparer symptômes et causes",
+                        "Dissocier urgences et importances"
+                    ],
+                    correctAnswer: "Distinguer corrélation et causalité",
+                    explanation: "Deux événements qui se produisent ensemble ne sont pas nécessairement liés par une relation de cause à effet.",
+                    tip: "Cherchez toujours des preuves de causalité, pas seulement de corrélation, avant de conclure."
+                },
+                {
+                    thematic: "Étape 4 : Diagnostic",
+                    question: "Comment valider une hypothèse causale selon Dalio ?",
+                    options: [
+                        "Par des tests A/B ou des expérimentations contrôlées",
+                        "Par consensus de l'équipe",
+                        "Par comparaison avec les meilleures pratiques",
+                        "Par analyse statistique avancée"
+                    ],
+                    correctAnswer: "Par des tests A/B ou des expérimentations contrôlées",
+                    explanation: "Une validation empirique est plus fiable que l'opinion, même majoritaire.",
+                    tip: "Même une petite expérimentation bien conçue vaut mieux qu'une grande discussion théorique."
+                },
+                {
+                    thematic: "ÉTAPE 5: SOLUTIONS (12 questions)",
+                    question: "Qu'est-ce qu'une solution 'systémique' selon Dalio ?",
+                    options: [
+                        "Une solution qui modifie le système pour empêcher la récurrence du problème",
+                        "Une solution qui implique toute l'organisation",
+                        "Une solution complexe et complète",
+                        "Une solution basée sur la technologie"
+                    ],
+                    correctAnswer: "Une solution qui modifie le système pour empêcher la récurrence du problème",
+                    explanation: "Une bonne solution ne traite pas seulement le symptôme actuel, mais transforme les exceptions en nouvelles règles.",
+                    tip: "Concevez vos solutions pour qu'elles deviennent la nouvelle norme, pas une exception temporaire."
+                },
+                {
+                    thematic: "Étape 5 : Solutions",
+                    question: "Quelle solution systémique Nexus a-t-elle conçue pour les problèmes d'estimation ?",
+                    options: [
+                        "Phase obligatoire 'Spike Technique' avant toute estimation",
+                        "Embaucher un expert en estimation",
+                        "Utiliser un logiciel d'estimation avancé",
+                        "Augmenter systématiquement les estimations de 30%"
+                    ],
+                    correctAnswer: "Phase obligatoire 'Spike Technique' avant toute estimation",
+                    explanation: "Cette solution modifie le processus lui-même, créant une nouvelle norme qui prévient le problème à la source.",
+                    tip: "Les solutions de processus sont souvent plus durables que les solutions techniques ou humaines."
+                },
+                {
+                    thematic: "Étape 5 : Solutions",
+                    question: "Quel principe de conception Dalio recommande-t-il pour les solutions ?",
+                    options: [
+                        "Simplicité : la solution la plus simple qui fonctionne",
+                        "Complexité : couvrir tous les cas possibles",
+                        "Innovation : toujours chercher des solutions disruptives",
+                        "Rapidité : implémenter d'abord, ajuster ensuite"
+                    ],
+                    correctAnswer: "Simplicité : la solution la plus simple qui fonctionne",
+                    explanation: "Les solutions complexes sont difficiles à implémenter et à maintenir. La simplicité favorise l'adoption.",
+                    tip: "Si votre solution nécessite plus d'explication que le problème lui-même, elle est probablement trop complexe."
+                },
+                {
+                    thematic: "Étape 5 : Solutions",
+                    question: "Pourquoi Dalio insiste-t-il sur la 'testabilité' des solutions ?",
+                    options: [
+                        "Pour pouvoir mesurer leur efficacité et les ajuster",
+                        "Pour obtenir l'approbation des parties prenantes",
+                        "Pour faciliter leur déploiement",
+                        "Pour réduire les coûts de développement"
+                    ],
+                    correctAnswer: "Pour pouvoir mesurer leur efficacité et les ajuster",
+                    explanation: "Sans capacité à mesurer l'impact, on ne sait pas si la solution fonctionne réellement.",
+                    tip: "Définissez des indicateurs de succès clairs avant d'implémenter une solution."
+                },
+                {
+                    thematic: "ÉTAPE 6: EXÉCUTION (12 questions)",
+                    question: "Que signifie 'exécution disciplinée' pour Dalio ?",
+                    options: [
+                        "Suivre systématiquement ce qui fonctionne tout en s'adaptant aux nouvelles informations",
+                        "Rester rigoureusement fidèle au plan initial",
+                        "Travailler plus dur que la concurrence",
+                        "Respecter strictement les deadlines"
+                    ],
+                    correctAnswer: "Suivre systématiquement ce qui fonctionne tout en s'adaptant aux nouvelles informations",
+                    explanation: "La discipline n'est pas la rigidité, mais la capacité à maintenir le cap tout en ajustant la voile.",
+                    tip: "Une bonne discipline combine constance dans l'effort et flexibilité dans les méthodes."
+                },
+                {
+                    thematic: "Étape 6 : Exécution",
+                    question: "Quel rythme Dalio recommande-t-il pour l'exécution ?",
+                    options: [
+                        "Daily check-ins, weekly reviews, monthly retrospectives",
+                        "Réunions mensuelles seulement",
+                        "Surveillance en temps réel constante",
+                        "Revues trimestrielles formelles"
+                    ],
+                    correctAnswer: "Daily check-ins, weekly reviews, monthly retrospectives",
+                    explanation: "Ce rythme combiné permet à la fois réactivité quotidienne et perspective stratégique mensuelle.",
+                    tip: "Adaptez ce rythme à votre contexte, mais gardez la régularité - la discipline naît de la répétition."
+                },
+                {
+                    thematic: "Étape 6 : Exécution",
+                    question: "Quel système d'exécution Nexus a-t-elle mis en place ?",
+                    options: [
+                        "Implémentation progressive avec feedback loops courts",
+                        "Déploiement complet en une fois",
+                        "Test sur un petit groupe puis généralisation",
+                        "Formation intensive puis déploiement"
+                    ],
+                    correctAnswer: "Implémentation progressive avec feedback loops courts",
+                    explanation: "Cette approche permet d'ajuster en cours de route tout en maintenant la discipline.",
+                    tip: "Les boucles de feedback courtes transforment l'exécution en processus d'apprentissage continu."
+                },
+                {
+                    thematic: "Étape 6 : Exécution",
+                    question: "Que signifie 'visibilité totale' dans l'exécution Dalio ?",
+                    options: [
+                        "Les progrès sont visibles par toute l'équipe en temps réel",
+                        "Toutes les décisions sont documentées publiquement",
+                        "Les performances individuelles sont affichées",
+                        "Toutes les réunions sont enregistrées"
+                    ],
+                    correctAnswer: "Les progrès sont visibles par toute l'équipe en temps réel",
+                    explanation: "La visibilité crée une saine pression par les pairs et permet l'ajustement collaboratif.",
+                    tip: "Utilisez des tableaux partagés physiques ou digitaux pour rendre le travail visible."
+                },
+                {
+                    thematic: "ÉTAPE 7: APPRENTISSAGE (12 questions)",
+                    question: "Quelle est l'essence de l'étape 7 selon Dalio ?",
+                    options: [
+                        "Transformer les expériences, mêmes douloureuses, en avantage compétitif durable",
+                        "Documenter les succès pour les reproduire",
+                        "Analyser les échecs pour éviter leur répétition",
+                        "Célébrer les victoires pour motiver l'équipe"
+                    ],
+                    correctAnswer: "Transformer les expériences, mêmes douloureuses, en avantage compétitif durable",
+                    explanation: "L'apprentissage est ce qui fait qu'un cycle produit non seulement des résultats, mais aussi de la sagesse collective.",
+                    tip: "Un cycle sans apprentissage est un cycle gaspillé, quels que soient ses résultats immédiats."
+                },
+                {
+                    thematic: "Étape 7 : Apprentissage",
+                    question: "Quelle méthode Dalio recommande-t-il pour capitaliser les apprentissages ?",
+                    options: [
+                        "After Action Review avec 4 questions structurées",
+                        "Rapport d'analyse post-mortem",
+                        "Journal de bord individuel",
+                        "Base de connaissances collaborative"
+                    ],
+                    correctAnswer: "After Action Review avec 4 questions structurées",
+                    explanation: "Cette méthode simple mais efficace structure l'apprentissage sans le bureaucratiser.",
+                    tip: "Les 4 questions : 1) Qu'est-ce qui était prévu ? 2) Qu'est-ce qui s'est passé ? 3) Pourquoi la différence ? 4) Qu'apprenons-nous ?"
+                },
+                {
+                    thematic: "Étape 7 : Apprentissage",
+                    question: "Quel apprentissage clé Nexus a-t-elle tiré de son premier cycle complet ?",
+                    options: [
+                        "L'étape 0 est non négociable - tout accroc ultérieur y remontait",
+                        "La vision doit être flexible et évolutive",
+                        "Les problèmes techniques sont les plus difficiles à résoudre",
+                        "L'exécution disciplinée nécessite un leader fort"
+                    ],
+                    correctAnswer: "L'étape 0 est non négociable - tout accroc ultérieur y remontait",
+                    explanation: "Cet apprentissage a transformé leur approche des cycles suivants, avec un investissement systématique dans l'étape 0.",
+                    tip: "Identifiez les apprentissages 'méta' qui transforment non seulement vos actions mais votre manière de penser."
+                },
+                {
+                    thematic: "Cycle Complet",
+                    question: "Que représente la 'boucle fermée' dans le cycle Dalio ?",
+                    options: [
+                        "Chaque cycle produit une nouvelle réalité qui devient le point de départ du cycle suivant",
+                        "Toutes les étapes sont interconnectées et interdépendantes",
+                        "Le processus est entièrement automatisé",
+                        "Les résultats sont toujours mesurés et comparés aux objectifs"
+                    ],
+                    correctAnswer: "Chaque cycle produit une nouvelle réalité qui devient le point de départ du cycle suivant",
+                    explanation: "C'est cette boucle qui crée l'effet cumulatif - chaque cycle s'appuie sur les apprentissages du précédent.",
+                    tip: "Concevez vos projets non comme des lignes droites mais comme des cycles qui s'améliorent à chaque itération."
+                },
+                {
+                    thematic: "Cycle Complet",
+                    question: "Quel est l'avantage compétitif principal du cycle complet Dalio ?",
+                    options: [
+                        "L'accumulation d'apprentissages qui s'ajoutent à chaque itération",
+                        "La rigueur méthodologique supérieure",
+                        "La rapidité d'exécution exceptionnelle",
+                        "La capacité à anticiper tous les risques"
+                    ],
+                    correctAnswer: "L'accumulation d'apprentissages qui s'ajoutent à chaque itération",
+                    explanation: "Alors que les résultats individuels peuvent être copiés, l'apprentissage cumulatif devient un avantage durable.",
+                    tip: "Mesurez votre succès non seulement par les résultats, mais par la qualité et la quantité des apprentissages capitalisés."
+                },
+                {
+                    thematic: "Cycle Complet",
+                    question: "Combien de cycles Dalio recommande-t-il pour maîtriser la méthode ?",
+                    options: [
+                        "3 cycles complets pour intégrer la logique systémique",
+                        "1 cycle pour comprendre les bases",
+                        "5 cycles pour atteindre l'expertise",
+                        "Cela dépend de la complexité du projet"
+                    ],
+                    correctAnswer: "3 cycles complets pour intégrer la logique systémique",
+                    explanation: "Le premier cycle enseigne les étapes, le deuxième la logique systémique, le troisième la maîtrise.",
+                    tip: "Ne jugez pas la méthode sur un seul cycle - ses bénéfices apparaissent avec la répétition."
+                },
+                {
+                    thematic: "Concepts Clés",
+                    question: "Qu'est-ce que le 'principe de réalité radicale' de Dalio ?",
+                    options: [
+                        "Accepter et travailler avec la réalité telle qu'elle est, pas telle qu'on la souhaite",
+                        "Être brutalement honnête en toutes circonstances",
+                        "Se concentrer uniquement sur les faits vérifiables",
+                        "Ignorer les opinions subjectives"
+                    ],
+                    correctAnswer: "Accepter et travailler avec la réalité telle qu'elle est, pas telle qu'on la souhaite",
+                    explanation: "Ce principe fondamental sous-tend toute la méthode et représente l'anti-ego nécessaire au succès.",
+                    tip: "La réalité radicale est inconfortable mais libératrice - elle vous libère des illusions coûteuses."
+                }
+            ]
+        };
+
+        // DOM Elements
+        const settingsPanelEl = document.getElementById('settings-panel');
+        const quizContentEl = document.getElementById('quiz-content');
+        const questionCountEl = document.getElementById('question-count');
+        const startQuizBtn = document.getElementById('start-quiz-btn');
+        const questionCounterEl = document.getElementById('question-counter');
+        const currentScoreEl = document.getElementById('current-score');
+        const progressBarEl = document.getElementById('progress-bar');
+        const questionTextEl = document.getElementById('question-text');
+        const thematicBadgeEl = document.getElementById('thematic-badge');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTitleEl = document.getElementById('explanation-title');
+        const explanationTextEl = document.getElementById('explanation-text');
+        const tipBoxEl = document.getElementById('tip-box');
+        const tipTextEl = document.getElementById('tip-text');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const finishBtn = document.getElementById('finish-btn');
+        
+        // Modal Elements
+        const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
+        const finalScoreCorrectEl = document.getElementById('final-score-correct');
+        const finalScoreTotalEl = document.getElementById('final-score-total');
+        const finalScorePercentageEl = document.getElementById('final-score-percentage');
+        const finalRecommendationsEl = document.getElementById('final-recommendations');
+        const systemicSkillsEl = document.getElementById('systemic-skills');
+        const systemicSkillsTextEl = document.getElementById('systemic-skills-text');
+        const executionSkillsEl = document.getElementById('execution-skills');
+        const executionSkillsTextEl = document.getElementById('execution-skills-text');
+        const shortTermEl = document.getElementById('short-term');
+        const longTermEl = document.getElementById('long-term');
+        const restartQuizBtn = document.getElementById('restart-quiz-btn');
+
+        // Quiz State
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = [];
+        let questions = [];
+        let selectedQuestionCount = 100;
+
+        // Badge classes mapping
+        const badgeClasses = {
+            "Étape 0 : Réalité": "badge-etape0",
+            "Étape 1 : Vision": "badge-etape1",
+            "Étape 2 : Objectifs": "badge-etape2",
+            "Étape 3 : Problèmes": "badge-etape3",
+            "Étape 4 : Diagnostic": "badge-etape4",
+            "Étape 5 : Solutions": "badge-etape5",
+            "Étape 6 : Exécution": "badge-etape6",
+            "Étape 7 : Apprentissage": "badge-etape7",
+            "Cycle Complet": "badge-cycle",
+            "Concepts Clés": "badge-etape1"
+        };
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function filterQuestionsByDomain() {
+            const domains = {
+                'etape0': "Étape 0 : Réalité",
+                'etape1': "Étape 1 : Vision", 
+                'etape2': "Étape 2 : Objectifs",
+                'etape3': "Étape 3 : Problèmes",
+                'etape4': "Étape 4 : Diagnostic",
+                'etape5': "Étape 5 : Solutions",
+                'etape6': "Étape 6 : Exécution",
+                'etape7': "Étape 7 : Apprentissage",
+                'cycle': "Cycle Complet",
+                'concepts': "Concepts Clés"
+            };
+            
+            const selectedDomains = [];
+            for (const [id, domain] of Object.entries(domains)) {
+                if (document.getElementById(id).checked) {
+                    selectedDomains.push(domain);
+                }
+            }
+            
+            if (selectedDomains.length === 0) {
+                return [...quizData.questions];
+            }
+            
+            return quizData.questions.filter(q => selectedDomains.includes(q.thematic));
+        }
+
+        function startQuiz() {
+            selectedQuestionCount = parseInt(questionCountEl.value);
+            
+            let filteredQuestions = filterQuestionsByDomain();
+            
+            if (filteredQuestions.length === 0) {
+                alert('Veuillez sélectionner au moins un domaine à évaluer.');
+                return;
+            }
+            
+            if (filteredQuestions.length < selectedQuestionCount) {
+                alert(`Seulement ${filteredQuestions.length} questions disponibles dans les domaines sélectionnés. Le quiz sera limité à ce nombre.`);
+                selectedQuestionCount = filteredQuestions.length;
+            }
+            
+            const shuffledQuestions = shuffleArray(filteredQuestions);
+            questions = shuffledQuestions.slice(0, selectedQuestionCount);
+            
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = new Array(questions.length).fill(null);
+            
+            settingsPanelEl.classList.add('d-none');
+            quizContentEl.classList.remove('d-none');
+            
+            displayQuestion(currentQuestionIndex);
+            updateScoreDisplay();
+            resultsModal.hide();
+        }
+
+        function displayQuestion(index) {
+            explanationBoxEl.classList.add('d-none');
+            tipBoxEl.classList.add('d-none');
+            
+            const question = questions[index];
+            questionTextEl.textContent = question.question;
+            
+            thematicBadgeEl.textContent = question.thematic;
+            thematicBadgeEl.className = 'thematic-badge';
+            thematicBadgeEl.classList.add(badgeClasses[question.thematic] || 'badge-etape1');
+            
+            optionsContainerEl.innerHTML = '';
+            
+            question.options.forEach(optionText => {
+                const button = document.createElement('button');
+                button.textContent = optionText;
+                button.classList.add('btn', 'option-btn');
+                button.onclick = () => selectAnswer(button, optionText, index);
+                optionsContainerEl.appendChild(button);
+            });
+            
+            updateNavigation();
+            updateProgressBar();
+            
+            if (userAnswers[index] !== null) {
+                showAnswerFeedback(index);
+            }
+        }
+        
+        function selectAnswer(button, selectedAnswer, questionIndex) {
+            if (userAnswers[questionIndex] !== null) return;
+            
+            const question = questions[questionIndex];
+            const isCorrect = selectedAnswer === question.correctAnswer;
+            
+            userAnswers[questionIndex] = {
+                selected: selectedAnswer,
+                correct: question.correctAnswer,
+                isCorrect: isCorrect
+            };
+            
+            if(isCorrect) {
+                score++;
+            }
+            updateScoreDisplay();
+            showAnswerFeedback(questionIndex);
+        }
+
+        function showAnswerFeedback(index) {
+            const userAnswer = userAnswers[index];
+            if (!userAnswer) return;
+
+            const question = questions[index];
+
+            const optionButtons = optionsContainerEl.querySelectorAll('.option-btn');
+            optionButtons.forEach(btn => {
+                btn.disabled = true;
+                if (btn.textContent === userAnswer.correct) {
+                    btn.classList.add('correct');
+                } else if (btn.textContent === userAnswer.selected) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            explanationTextEl.textContent = question.explanation;
+            if (userAnswer.isCorrect) {
+                explanationTitleEl.textContent = "✅ Correct ! Connaissance validée";
+                explanationBoxEl.className = 'explanation-correct';
+            } else {
+                explanationTitleEl.textContent = "💡 À retenir pour maîtriser Dalio";
+                explanationBoxEl.className = 'explanation-incorrect';
+            }
+            explanationBoxEl.classList.remove('d-none');
+            
+            if (question.tip) {
+                tipTextEl.textContent = question.tip;
+                tipBoxEl.classList.remove('d-none');
+            }
+        }
+
+        function updateNavigation() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.classList.toggle('d-none', currentQuestionIndex === questions.length - 1);
+            finishBtn.classList.toggle('d-none', currentQuestionIndex !== questions.length - 1);
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBarEl.style.width = `${progress}%`;
+            progressBarEl.setAttribute('aria-valuenow', progress);
+            questionCounterEl.textContent = `Question ${currentQuestionIndex + 1} / ${questions.length}`;
+        }
+        
+        function updateScoreDisplay() {
+            currentScoreEl.textContent = `Score: ${score}/${questions.length}`;
+        }
+
+        function handleNext() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion(currentQuestionIndex);
+            }
+        }
+
+        function handlePrev() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion(currentQuestionIndex);
+            }
+        }
+
+        function calculateSkillLevels() {
+            const thematicScores = {};
+            const difficultyScores = { systemic: 0, execution: 0 };
+            let totalAnswered = 0;
+            
+            userAnswers.forEach((answer, index) => {
+                if (answer !== null) {
+                    totalAnswered++;
+                    const question = questions[index];
+                    
+                    if (!thematicScores[question.thematic]) {
+                        thematicScores[question.thematic] = { correct: 0, total: 0 };
+                    }
+                    thematicScores[question.thematic].total++;
+                    if (answer.isCorrect) {
+                        thematicScores[question.thematic].correct++;
+                    }
+                    
+                    // Categorize questions as systemic (planning) or execution (action)
+                    if (question.thematic.includes("Réalité") || question.thematic.includes("Vision") || 
+                        question.thematic.includes("Objectifs") || question.thematic.includes("Diagnostic")) {
+                        if (answer.isCorrect) difficultyScores.systemic++;
+                    } else {
+                        if (answer.isCorrect) difficultyScores.execution++;
+                    }
+                }
+            });
+            
+            return {
+                thematicScores,
+                systemicScore: totalAnswered > 0 ? (difficultyScores.systemic / totalAnswered) * 100 : 0,
+                executionScore: totalAnswered > 0 ? (difficultyScores.execution / totalAnswered) * 100 : 0
+            };
+        }
+
+        function showFinalResults() {
+            const percentage = (score / questions.length) * 100;
+            const skillAnalysis = calculateSkillLevels();
+            
+            let scoreColor, level, recommendationsHtml, shortTerm, longTerm;
+            
+            if (percentage >= 90) {
+                scoreColor = '#10b981';
+                level = "Expert Dalio";
+                recommendationsHtml = `
+                    <h5><i class="fas fa-crown text-warning"></i> Excellence systémique !</h5>
+                    <p>Vous maîtrisez parfaitement les 8 étapes et la logique cyclique de Dalio. Vous pouvez désormais appliquer cette méthode pour transformer n'importe quel projet complexe.</p>
+                    <div class="alert alert-success">
+                        <i class="fas fa-rocket"></i> <strong>Prochaine étape :</strong> Enseignez la méthode à d'autres et développez vos propres principes opérationnels.
+                    </div>
+                `;
+                shortTerm = "Coach d'équipes sur la méthode, développement de vos propres principes Dalio-compatibles";
+                longTerm = "Transformation organisationnelle systémique, conseil stratégique basé sur les principes Dalio";
+            } else if (percentage >= 75) {
+                scoreColor = '#3b82f6';
+                level = "Compétent Avancé";
+                recommendationsHtml = `
+                    <h5><i class="fas fa-medal text-info"></i> Très bonne maîtrise !</h5>
+                    <p>Vous comprenez profondément la méthode et pouvez l'appliquer efficacement. Concentrez-vous maintenant sur l'intégration complète du cycle dans votre pratique quotidienne.</p>
+                    <div class="alert alert-info">
+                        <i class="fas fa-lightbulb"></i> <strong>Focus :</strong> Appliquez la méthode complète sur 3 projets différents pour atteindre la maîtrise.
+                    </div>
+                `;
+                shortTerm = "Application complète sur un projet réel, coaching de pairs, documentation de vos apprentissages";
+                longTerm = "Responsable de la transformation méthodologique, développement de compétences en facilitation du cycle";
+            } else if (percentage >= 60) {
+                scoreColor = '#f59e0b';
+                level = "Intermédiaire";
+                recommendationsHtml = `
+                    <h5><i class="fas fa-graduation-cap text-warning"></i> Bonnes bases à consolider</h5>
+                    <p>Vous avez compris les concepts clés mais devez approfondir l'intégration systémique des 8 étapes.</p>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-book"></i> <strong>Priorité :</strong> Pratiquez particulièrement les étapes 0, 4 et 7 qui sont les plus critiques.
+                    </div>
+                `;
+                shortTerm = "Revoir les étapes faibles, appliquer la méthode sur un petit projet, participer à des ateliers pratiques";
+                longTerm = "Maîtrise progressive de chaque étape, puis intégration du cycle complet";
+            } else if (percentage >= 40) {
+                scoreColor = '#ef4444';
+                level = "Débutant";
+                recommendationsHtml = `
+                    <h5><i class="fas fa-book-open text-primary"></i> Début de parcours</h5>
+                    <p>Vous avez saisi les bases conceptuelles mais devez approfondir chaque étape avant de maîtriser le cycle complet.</p>
+                    <div class="alert alert-primary">
+                        <i class="fas fa-redo"></i> <strong>Action :</strong> Revisitez les étapes une par une avec des cas concrets.
+                    </div>
+                `;
+                shortTerm = "Étude approfondie étape par étape, application partielle sur des projets simples";
+                longTerm = "Maîtrise progressive, puis application complète sur projet de complexité moyenne";
+            } else {
+                scoreColor = '#dc2626';
+                level = "Besoin de Formation";
+                recommendationsHtml = `
+                    <h5><i class="fas fa-exclamation-triangle text-danger"></i> Nécessite un renforcement important</h5>
+                    <p>Vous devez reprendre les fondamentaux de la méthode avant de pouvoir l'appliquer efficacement.</p>
+                    <div class="alert alert-danger">
+                        <i class="fas fa-university"></i> <strong>Urgence :</strong> Programme structuré d'apprentissage des bases.
+                    </div>
+                `;
+                shortTerm = "Formation de base sur les 8 étapes, étude de cas simples, mentorat";
+                longTerm = "Acquisition progressive des compétences, application sur projets très simples d'abord";
+            }
+
+            finalScoreCorrectEl.textContent = score;
+            finalScoreTotalEl.textContent = questions.length;
+            finalScorePercentageEl.textContent = `${percentage.toFixed(0)}% - ${level}`;
+            finalScorePercentageEl.style.background = `linear-gradient(135deg, ${scoreColor} 0%, ${scoreColor}00 100%)`;
+            
+            systemicSkillsEl.style.width = `${skillAnalysis.systemicScore}%`;
+            executionSkillsEl.style.width = `${skillAnalysis.executionScore}%`;
+            systemicSkillsTextEl.textContent = `Compétences systémiques : ${skillAnalysis.systemicScore.toFixed(0)}%`;
+            executionSkillsTextEl.textContent = `Compétences d'exécution : ${skillAnalysis.executionScore.toFixed(0)}%`;
+            
+            finalRecommendationsEl.innerHTML = recommendationsHtml;
+            shortTermEl.textContent = shortTerm;
+            longTermEl.textContent = longTerm;
+            
+            const thematicAnalysis = Object.entries(skillAnalysis.thematicScores)
+                .map(([theme, scores]) => {
+                    const themePercentage = (scores.correct / scores.total) * 100;
+                    return `<div class="mb-2">
+                        <small>${theme}: <strong>${themePercentage.toFixed(0)}%</strong> (${scores.correct}/${scores.total})</small>
+                        <div class="progress" style="height: 5px;">
+                            <div class="progress-bar" style="width: ${themePercentage}%"></div>
+                        </div>
+                    </div>`;
+                })
+                .join('');
+            
+            if (thematicAnalysis) {
+                finalRecommendationsEl.innerHTML += `
+                    <div class="mt-3">
+                        <h6><i class="fas fa-chart-bar"></i> Analyse par étape</h6>
+                        ${thematicAnalysis}
+                    </div>
+                `;
+            }
+
+            resultsModal.show();
+        }
+
+        function restartQuiz() {
+            settingsPanelEl.classList.remove('d-none');
+            quizContentEl.classList.add('d-none');
+            resultsModal.hide();
+        }
+
+        startQuizBtn.addEventListener('click', startQuiz);
+        nextBtn.addEventListener('click', handleNext);
+        prevBtn.addEventListener('click', handlePrev);
+        finishBtn.addEventListener('click', showFinalResults);
+        restartQuizBtn.addEventListener('click', restartQuiz);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            settingsPanelEl.classList.remove('d-none');
+            quizContentEl.classList.add('d-none');
+        });
+    </script>
+</body>
+</html>
