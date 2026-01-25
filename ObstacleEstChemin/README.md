@@ -6,6 +6,7 @@ La vie n’est jamais un long fleuve tranquille. Chaque difficulté que nous ren
 
 
 - https://vt.tiktok.com/ZSaDstEtJ/
+  
 - L'obstacle est le chemin ! L'obstacle est le chemin !
 
 
