@@ -5,6 +5,10 @@
 La vie n’est jamais un long fleuve tranquille. Chaque difficulté que nous rencontrons n’est pas simplement un frein, mais une **opportunité de grandir, d’apprendre et de devenir plus fort**. 💪 Les obstacles ne sont pas à craindre : ils **sont le chemin** qui nous mène vers la réussite et la sagesse. Voici 15 idées pour comprendre ce concept avec des exemples concrets. ✨
 
 
+- https://vt.tiktok.com/ZSaSKduFR/
+- Epreuves /Douleurs : L'obstacle est le chemin
+
+
 - https://vt.tiktok.com/ZSaDstEtJ/
   
 - L'obstacle est le chemin ! L'obstacle est le chemin !
